@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://www.bignerdranch.com/blog/splash-screens-the-right-way/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Splash Screens the Right Way</title>
+  <meta name="description" content="Chris Stewart shows you the right way to implement a splash screen in your Android app.">
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.bignerdranch.com/favicon.png">
+
+  <!-- Google Tag Manager -->
+  <script type="text/javascript" async="" src="./Splash Screens the Right Way_files/analytics.js.download"></script><script type="text/javascript" src="./Splash Screens the Right Way_files/pd.js.download"></script><script type="text/javascript" async="" src="./Splash Screens the Right Way_files/linkid.js.download"></script><script type="text/javascript" async="" src="./Splash Screens the Right Way_files/roundtrip.js.download"></script><script type="text/javascript" async="" src="./Splash Screens the Right Way_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Splash Screens the Right Way_files/insight.min.js.download"></script><script type="text/javascript" async="" src="./Splash Screens the Right Way_files/insight.min.js.download"></script><script async="" src="./Splash Screens the Right Way_files/uwt.js.download"></script><script src="./Splash Screens the Right Way_files/1220301374685946" async=""></script><script src="./Splash Screens the Right Way_files/0" async=""></script><script async="" src="./Splash Screens the Right Way_files/fbevents.js.download"></script><script async="" src="./Splash Screens the Right Way_files/gtm.js.download"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PGM76X');</script>
+  <!-- End Google Tag Manager -->
+
+<!-- Pardot Tracking Code -->
+<script type="text/javascript">
+piAId = '300472';
+piCId = '1560';
+
+(function() {
+	function async_load(){
+		var s = document.createElement('script'); s.type = 'text/javascript';
+		s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
+		var c = document.getElementsByTagName('script')[0]; c.parentNode.insertBefore(s, c);
+	}
+	if(window.attachEvent) { window.attachEvent('onload', async_load); }
+	else { window.addEventListener('load', async_load, false); }
+})();
+</script>
+<!-- end Pardot Tracking code -->
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1220301374685946'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+
+
+
+</script>
+<noscript>&lt;img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1220301374685946&amp;ev=PageView&amp;noscript=1"
+/&gt;</noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+
+  <!-- Twitter universal website tag code -->
+<script>
+!function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
+a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+// Insert Twitter Pixel ID and Standard Event data below
+twq('init','nw3dj');
+twq('track','PageView');
+</script>
+<!-- End Twitter universal website tag code -->
+
+  <!-- LinkedIn insight Code -->
+  <script type="text/javascript">
+  _linkedin_data_partner_id = "25576";
+  </script>
+  <script type="text/javascript">
+  (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})();
+  </script>
+  <!-- End LinkedIn insight Code -->
+
+  <!-- LinkedIn retargeting Code -->
+  <script type="text/javascript">
+  _linkedin_data_partner_id = "47500";
+  </script><script type="text/javascript">
+  (function(){var s = document.getElementsByTagName("script")[0];
+  var b = document.createElement("script");
+  b.type = "text/javascript";b.async = true;
+  b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+  s.parentNode.insertBefore(b, s);})();
+  </script>
+  <noscript>
+  &lt;img height="1" width="1" style="display:none;" alt="" src="https://dc.ads.linkedin.com/collect/?pid=47500&amp;fmt=gif" /&gt;
+  </noscript>
+  <!-- End LinkedIn retargeting Code -->
+
+  <link rel="stylesheet" href="./Splash Screens the Right Way_files/index.min.css">
+
+  
+  <link rel="canonical" href="https://www.bignerdranch.com/blog/splash-screens-the-right-way/">
+
+  <link rel="alternate" type="application/rss+xml" title="Big Nerd Ranch" href="https://www.bignerdranch.com/feed.xml">
+
+  
+
+  <meta property="fb:app_id" content="955221924617701">
+  <meta property="og:url" content="https://www.bignerdranch.com/blog/splash-screens-the-right-way/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Splash Screens the Right Way">
+  <meta property="og:description" content="Chris Stewart shows you the right way to implement a splash screen in your Android app.">
+  <meta property="og:image" content="https://www.bignerdranch.com/assets/img/logos/square-logo.jpeg">
+  <meta property="og:site_name" content="Big Nerd Ranch">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@bignerdranch">
+  <meta name="twitter:title" content="Splash Screens the Right Way">
+  <meta name="twitter:description" content="Chris Stewart shows you the right way to implement a splash screen in your Android app.">
+  <meta name="twitter:image" content="https://www.bignerdranch.com/assets/img/logos/twitter-logo.png">
+<script type="text/javascript" async="" src="./Splash Screens the Right Way_files/embed.js.download"></script><script async="true" type="text/javascript" src="./Splash Screens the Right Way_files/RUPVAE4MIBEMPA5LWIZ6G3"></script><link rel="preload" as="style" href="https://c.disquscdn.com/next/embed/styles/lounge.a219a5731bfdc6a1d16fa492c1ac36e9.css"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/common.bundle.a4849fee956376877b26b8e6c72d72af.js"><link rel="preload" as="script" href="https://c.disquscdn.com/next/embed/lounge.bundle.d735d49630e10f25dc6756b3389202b7.js"><link rel="preload" as="script" href="https://disqus.com/next/config.js"><div style="width: 1px; height: 1px; display: inline; position: absolute;"><img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out(1)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out(2)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out(3)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out(4)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out(5)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out(6)">
+<img height="1" width="1" style="border-style:none;" alt="" src="./Splash Screens the Right Way_files/out(7)">
+</div><script type="text/javascript" src="./Splash Screens the Right Way_files/analytics"></script></head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGM76X"
+    height="0" width="0" style="display:none;visibility:hidden"&gt;&lt;/iframe&gt;</noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <header class="header">
+  <a class="header__logo" href="https://www.bignerdranch.com/">
+    <img src="./Splash Screens the Right Way_files/logo.svg" alt="Big Nerd Ranch Logo">
+  </a>
+
+  <a class="js-header-dropdown header__dropdown">
+    <span class="header__dropdown-bullet">•</span>
+    <span class="header__dropdown-bullet">•</span>
+    <span class="header__dropdown-bullet">•</span>
+  </a>
+
+  <nav>
+    <ul class="header__nav-main">
+      <li><a href="https://www.bignerdranch.com/work">work</a></li>
+      <li><a href="https://www.bignerdranch.com/training">training</a></li>
+      <li><a href="https://www.bignerdranch.com/books">books</a></li>
+      <li><a href="https://www.bignerdranch.com/about">about</a></li>
+      <li><a href="https://www.bignerdranch.com/resources">resources</a></li>
+      <li><a class="header__nav-main--is-active" href="https://www.bignerdranch.com/blog">blog</a></li>
+      <li><a href="https://www.bignerdranch.com/contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <nav class="js-mobile-nav header__nav-mobile">
+    <ul>
+      <li><a href="https://www.bignerdranch.com/work"><span class="header__nav-mobile-item">work</span></a></li>
+      <li><a href="https://www.bignerdranch.com/training"><span class="header__nav-mobile-item">training</span></a></li>
+      <li><a href="https://www.bignerdranch.com/books"><span class="header__nav-mobile-item">books</span></a></li>
+      <li><a href="https://www.bignerdranch.com/about"><span class="header__nav-mobile-item">about</span></a></li>
+      <li><a href="https://www.bignerdranch.com/resources"><span class="header__nav-mobile-item">resources</span></a></li>
+      <li><a href="https://www.bignerdranch.com/blog"><span class="header__nav-mobile-item header__nav-mobile--is-active ">blog</span></a></li>
+      <li><a href="https://www.bignerdranch.com/contact"><span class="header__nav-mobile-item">contact</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+      
+      <div class="modal__wrapper">
+        <section class="s-background-white">
+  <div class="blog__landing-hero"></div>
+
+  <div class="l-container">
+    <div class="blog__card">
+      <div class="l-padding-bottom-lg">
+        <h1 class="t-heading">Splash Screens the Right Way</h1>
+      </div>
+
+      <header class="blog__author">
+        <img class="blog__author-img" src="./Splash Screens the Right Way_files/chris-stewart.jpg" alt="Chris Stewart">
+        <div class="blog__author-details">
+
+          <div class="blog__author-spacer">
+            <div>
+              <div><a class="blog__author-link" href="https://www.bignerdranch.com/about/the-team/chris-stewart">Chris Stewart</a></div>
+
+              <time class="blog__author-date" datetime="2015-08-27">
+                Aug
+                27,
+                2015
+              </time>
+              <span> • </span>
+              
+                <a class="blog__author-category" href="https://www.bignerdranch.com/blog/categories/android">Android</a>
+                
+              
+            </div>
+
+            <ul class="social-icons ">
+  <li>
+    <a href="https://twitter.com/intent/tweet?text=Splash%20Screens%20the%20Right%20Way&amp;url=https://www.bignerdranch.com/blog/splash-screens-the-right-way/&amp;via=bignerdranch&amp;related=bignerdranch" rel="nofollow" target="_blank" title="Share on Twitter">
+      <svg width="24" height="19" viewBox="0 0 24 19" xmlns="http://www.w3.org/2000/svg"><title>Bird</title><path d="M20.608 2.923c1.023-.585 1.754-1.608 2.046-2.63-.877.584-1.9.876-3.07 1.17C18.71.584 17.393 0 16.078 0c-2.63 0-4.823 2.192-4.823 4.823 0 .44 0 .73.146 1.023C7.454 5.7 3.8 3.8 1.462.876c-.44.732-.585 1.61-.585 2.486 0 1.607.877 3.07 2.192 3.946-.732 0-1.462-.293-2.193-.585 0 2.34 1.608 4.24 3.8 4.677-.292 0-.73.146-1.17.146-.292 0-.584 0-.876-.146.585 1.9 2.34 3.362 4.532 3.362-1.608 1.315-3.654 2.046-5.993 2.046H0C2.046 18.123 4.385 18.854 6.87 19h1.168c8.33-.438 13.008-7.454 13.008-13.592v-.585c.877-.73 1.754-1.46 2.34-2.485-.878.147-1.755.44-2.778.585z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="https://facebook.com/sharer.php?u=" target="_blank" title="Share on Facebook">
+      <svg width="11" height="23" viewBox="0 0 11 23" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M7.188 5.03c0-.43.287-.718.718-.718h2.875V0H5.75a3.56 3.56 0 0 0-3.594 3.594v4.312H0v4.313h2.156V23h5.03l.002-10.78h2.875l.718-4.314H7.19V5.03z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.bignerdranch.com/blog/splash-screens-the-right-way/&amp;title=Splash%20Screens%20the%20Right%20Way&amp;source=http://www.bignerdranch.com" target="_blank" title="Share on LinkedIn">
+      <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn__x28_alt_x29_</title><path d="M22.228 0H1.773C.793 0 0 .77 0 1.72v20.56C0 23.23.794 24 1.773 24h20.455c.98 0 1.772-.77 1.772-1.72V1.72C24 .77 23.207 0 22.228 0zM7.276 20.09H3.65V9.254h3.626V20.09zM5.463 7.774H5.44c-1.217 0-2.005-.832-2.005-1.873 0-1.06.81-1.87 2.05-1.87 1.24 0 2.004.808 2.028 1.87 0 1.042-.786 1.874-2.05 1.874zM20.347 20.09h-3.625v-5.798c0-1.457-.525-2.45-1.836-2.45-1.003 0-1.598.67-1.86 1.317-.096.23-.12.554-.12.877v6.052H9.28s.05-9.82 0-10.836h3.626v1.536c.48-.738 1.34-1.79 3.266-1.79 2.386 0 4.175 1.547 4.175 4.876v6.214zm-7.464-9.236c.01-.02.028-.042.044-.064v.064h-.044z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.reddit.com/submit" onclick="window.location = &#39;//www.reddit.com/submit?url=&#39; + encodeURIComponent(window.location); return false">
+      <svg width="31" height="27" viewBox="0 0 31 27" xmlns="http://www.w3.org/2000/svg"><title>Shape</title><path d="M7.553 15.107a1.888 1.888 0 1 1 3.777 0 1.888 1.888 0 0 1-3.777 0zm11.33 0a1.888 1.888 0 1 1 3.777 0 1.888 1.888 0 0 1-3.776 0zm.093 4.036a1.12 1.12 0 0 1 1.387 1.762c-1.354 1.066-3.418 1.756-5.256 1.756-1.84 0-3.903-.688-5.257-1.755a1.12 1.12 0 0 1 1.388-1.762c.78.614 2.323 1.275 3.87 1.275 1.545 0 3.088-.66 3.868-1.275zm11.238-7.812a3.777 3.777 0 0 0-7.077-1.834c-1.942-1.062-4.307-1.748-6.883-1.906l2.254-5.062 4.313 1.246A2.833 2.833 0 1 0 23 1.49L18.19.103a1.12 1.12 0 0 0-1.334.62L13.794 7.6c-2.512.177-4.817.856-6.716 1.895a3.777 3.777 0 1 0-4.824 5.29 6.917 6.917 0 0 0-.366 2.21c0 5.215 5.918 9.442 13.22 9.442 7.3 0 13.218-4.227 13.218-9.44 0-.763-.127-1.502-.365-2.21a3.776 3.776 0 0 0 2.254-3.456zm-4.72-9.56a1.062 1.062 0 1 1 0 2.126 1.062 1.062 0 0 1 0-2.125zM1.887 11.33a1.89 1.89 0 0 1 1.89-1.888 1.89 1.89 0 0 1 1.706 1.08c-.987.75-1.805 1.613-2.41 2.56a1.892 1.892 0 0 1-1.186-1.75zm13.22 12.865c-6.063 0-10.977-3.223-10.977-7.2 0-3.975 4.915-7.2 10.977-7.2s10.976 3.224 10.976 7.2c0 3.977-4.914 7.2-10.976 7.2zM27.14 13.083c-.605-.948-1.423-1.81-2.41-2.56a1.89 1.89 0 0 1 1.707-1.08 1.89 1.89 0 0 1 1.89 1.887 1.89 1.89 0 0 1-1.187 1.753z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:?subject=Splash%20Screens%20the%20Right%20Way&amp;body=https://www.bignerdranch.com/blog//blog/splash-screens-the-right-way/">
+      <svg width="27" height="20" viewBox="0 0 27 20" xmlns="http://www.w3.org/2000/svg"><title>Combined Shape</title><path d="M13.5 14.933a2.75 2.75 0 0 1-1.95-.804l-.025-.028-1.512-1.643a.968.968 0 0 0-1.39-.05l-7.066 6.898c-.39.382-.27.692.284.692H25.17c.548 0 .67-.315.283-.692l-7.072-6.9a.966.966 0 0 0-1.388.046l-1.54 1.675a2.75 2.75 0 0 1-1.95.803zM25.453.733C25.825.327 25.69 0 25.12 0H1.88c-.557 0-.7.333-.333.732L12.77 12.934c.393.38 1.067.38 1.46 0L25.453.732zM.683 2.314C.306 1.905 0 2.025 0 2.577v14.86c0 .555.32.692.71.31l6.754-6.592c.392-.384.41-1.02.028-1.437L.682 2.315zM26.29 17.74c.392.383.71.243.71-.31V2.577c0-.555-.3-.678-.683-.262l-6.81 7.402a1.04 1.04 0 0 0 .03 1.436l6.752 6.587z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+</ul>
+
+          </div>
+
+        </div>
+
+      </header>
+      <hr>
+
+      <div class="blog__landing-content"><p>The very idea of the splash screen makes me a little angry. Just saying the phrase makes me cringe.</p>
+
+<p>Splash screens just waste your time, right? As an Android developer, when I see a splash screen, I know that some poor dev had to add a three-second delay to the code.</p>
+
+<p>Then, I have to stare at some picture for three seconds until I can use the app. And I have to do this every time it’s launched. I know which app I opened. I know what it does. Just let me use it!</p>
+
+<h2 id="what-google-recommends">What Google Recommends</h2>
+
+<p>You may be surprised to hear that Google advocates that you use a splash screen. It’s right <a href="https://www.google.com/design/spec/patterns/launch-screens.html">here</a> in the material design spec.</p>
+
+<p>This wasn’t always the case; Google used to advocate against splash screens, and even <a href="https://youtu.be/pEGWcMTxs3I?t=1434">called it an anti-pattern</a>.</p>
+
+<p><img src="./Splash Screens the Right Way_files/adia_no_splash.png" alt="Adia no splash screen" title="Adia no splash screen"></p>
+
+<p>What gives?</p>
+
+<h2 id="splash-screens-the-right-way">Splash Screens the Right Way</h2>
+
+<p>I believe that Google isn’t contradicting itself; the old advice and the new stand together. (That said, it’s still not a good idea to use a splash screen that wastes a user’s time. Please don’t do that.)</p>
+
+<p>However, Android apps do take some amount of time to start up, especially on a cold start. There is a delay there that you may not be able to avoid. Instead of leaving a blank screen during this time, why not show the user something nice? This is the approach Google is advocating. Don’t waste the user’s time, but don’t show them a blank, unconfigured section of the app the first time they launch it, either.</p>
+
+<p>If you look at recent updates to Google apps, you’ll see appropriate uses of the splash screen. Take a look at the YouTube app, for example.</p>
+
+<p><img src="./Splash Screens the Right Way_files/youtube_splash.gif" alt="YouTube splash screen" title="YouTube splash screen"></p>
+
+<p>The amount of time you spend looking at this splash screen is exactly the amount of time it takes the app to configure itself. This is on a cold launch, too, which means this is the slowest launch possible. If the app is cached, the splash screen will go away almost immediately.</p>
+
+<h2 id="implementing-a-splash-screen">Implementing a Splash Screen</h2>
+
+<p>Implementing a splash screen the right way is a little different than you might imagine. The splash view that you see has to be ready immediately, even before you can inflate a layout file in your splash activity.</p>
+
+<p>So you will not use a layout file. Instead, specify your splash screen’s background as the activity’s theme background. To do this, first create an XML drawable in res/drawable.</p>
+
+<p><em>Note: all code below is <a href="https://github.com/cstew/Splash">available on GitHub</a>.</em></p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;layer-list</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span><span class="nt">&gt;</span>
+
+    <span class="nt">&lt;item</span>
+        <span class="na">android:drawable=</span><span class="s">"@color/gray"</span><span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;item&gt;</span>
+        <span class="nt">&lt;bitmap</span>
+            <span class="na">android:gravity=</span><span class="s">"center"</span>
+            <span class="na">android:src=</span><span class="s">"@mipmap/ic_launcher"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/item&gt;</span>
+
+<span class="nt">&lt;/layer-list&gt;</span>
+</code></pre>
+</div>
+
+<p>Here, I’ve set up a background color and an image.</p>
+
+<p>Next, you will set this as your splash activity’s background in the theme. Navigate to your styles.xml file and add a new theme for your splash activity:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;resources&gt;</span>
+
+    <span class="c">&lt;!-- Base application theme. --&gt;</span>
+    <span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">"AppTheme"</span> <span class="na">parent=</span><span class="s">"Theme.AppCompat.Light.DarkActionBar"</span><span class="nt">&gt;</span>
+        <span class="c">&lt;!-- Customize your theme here. --&gt;</span>
+    <span class="nt">&lt;/style&gt;</span>
+
+    <span class="nt">&lt;style</span> <span class="na">name=</span><span class="s">"SplashTheme"</span> <span class="na">parent=</span><span class="s">"Theme.AppCompat.NoActionBar"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">"android:windowBackground"</span><span class="nt">&gt;</span>@drawable/background_splash<span class="nt">&lt;/item&gt;</span>
+    <span class="nt">&lt;/style&gt;</span>
+
+<span class="nt">&lt;/resources&gt;</span>
+</code></pre>
+</div>
+
+<p>In your new <code class="highlighter-rouge">SplashTheme</code>, set the window background attribute to your XML drawable. Configure this as your splash activity’s theme in your <code class="highlighter-rouge">AndroidManifest.xml</code>:</p>
+
+<div class="language-xml highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;activity</span>
+    <span class="na">android:name=</span><span class="s">".SplashActivity"</span>
+    <span class="na">android:theme=</span><span class="s">"@style/SplashTheme"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;intent-filter&gt;</span>
+        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">"android.intent.action.MAIN"</span> <span class="nt">/&gt;</span>
+
+        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">"android.intent.category.LAUNCHER"</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/intent-filter&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</code></pre>
+</div>
+
+<p>Finally, your <code class="highlighter-rouge">SplashActivity</code> class should just forward you along to your main activity:</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SplashActivity</span> <span class="kd">extends</span> <span class="n">AppCompatActivity</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">protected</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">(</span><span class="n">Bundle</span> <span class="n">savedInstanceState</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">(</span><span class="n">savedInstanceState</span><span class="o">);</span>
+
+        <span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">MainActivity</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+        <span class="n">startActivity</span><span class="o">(</span><span class="n">intent</span><span class="o">);</span>
+        <span class="n">finish</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+</div>
+
+<p>Notice that you don’t even set up a view for this <code class="highlighter-rouge">SplashActivity</code>. The view comes from the theme. When you set up the UI for your splash activity in the theme, it is available immediately.</p>
+
+<p>If you did have a layout file for your splash activity, that layout file would be visible to the user only after your app has been fully initialized, which is too late. You want the splash to be displayed only in that small amount of time before the app is initialized.</p>
+
+<h2 id="doing-it-right">Doing it Right</h2>
+
+<p>With these steps completed, you will have a splash screen implemented the right way:</p>
+
+<p><img src="./Splash Screens the Right Way_files/sample_splash.gif" alt="Sample splash screen" title="Sample splash screen"></p>
+
+<p>Armed with this knowledge, make your splash screen work the right way. Don’t waste the user’s time, but give them something nice to look at while they wait.</p>
+</div>
+
+      <div class="l-padding-vert-lg">
+        <ul class="social-icons  social-icons--center">
+  <li>
+    <a href="https://twitter.com/intent/tweet?text=Splash%20Screens%20the%20Right%20Way&amp;url=https://www.bignerdranch.com/blog/splash-screens-the-right-way/&amp;via=bignerdranch&amp;related=bignerdranch" rel="nofollow" target="_blank" title="Share on Twitter">
+      <svg width="24" height="19" viewBox="0 0 24 19" xmlns="http://www.w3.org/2000/svg"><title>Bird</title><path d="M20.608 2.923c1.023-.585 1.754-1.608 2.046-2.63-.877.584-1.9.876-3.07 1.17C18.71.584 17.393 0 16.078 0c-2.63 0-4.823 2.192-4.823 4.823 0 .44 0 .73.146 1.023C7.454 5.7 3.8 3.8 1.462.876c-.44.732-.585 1.61-.585 2.486 0 1.607.877 3.07 2.192 3.946-.732 0-1.462-.293-2.193-.585 0 2.34 1.608 4.24 3.8 4.677-.292 0-.73.146-1.17.146-.292 0-.584 0-.876-.146.585 1.9 2.34 3.362 4.532 3.362-1.608 1.315-3.654 2.046-5.993 2.046H0C2.046 18.123 4.385 18.854 6.87 19h1.168c8.33-.438 13.008-7.454 13.008-13.592v-.585c.877-.73 1.754-1.46 2.34-2.485-.878.147-1.755.44-2.778.585z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="https://facebook.com/sharer.php?u=" target="_blank" title="Share on Facebook">
+      <svg width="11" height="23" viewBox="0 0 11 23" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M7.188 5.03c0-.43.287-.718.718-.718h2.875V0H5.75a3.56 3.56 0 0 0-3.594 3.594v4.312H0v4.313h2.156V23h5.03l.002-10.78h2.875l.718-4.314H7.19V5.03z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url=https://www.bignerdranch.com/blog/splash-screens-the-right-way/&amp;title=Splash%20Screens%20the%20Right%20Way&amp;source=http://www.bignerdranch.com" target="_blank" title="Share on LinkedIn">
+      <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn__x28_alt_x29_</title><path d="M22.228 0H1.773C.793 0 0 .77 0 1.72v20.56C0 23.23.794 24 1.773 24h20.455c.98 0 1.772-.77 1.772-1.72V1.72C24 .77 23.207 0 22.228 0zM7.276 20.09H3.65V9.254h3.626V20.09zM5.463 7.774H5.44c-1.217 0-2.005-.832-2.005-1.873 0-1.06.81-1.87 2.05-1.87 1.24 0 2.004.808 2.028 1.87 0 1.042-.786 1.874-2.05 1.874zM20.347 20.09h-3.625v-5.798c0-1.457-.525-2.45-1.836-2.45-1.003 0-1.598.67-1.86 1.317-.096.23-.12.554-.12.877v6.052H9.28s.05-9.82 0-10.836h3.626v1.536c.48-.738 1.34-1.79 3.266-1.79 2.386 0 4.175 1.547 4.175 4.876v6.214zm-7.464-9.236c.01-.02.028-.042.044-.064v.064h-.044z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="https://www.reddit.com/submit" onclick="window.location = &#39;//www.reddit.com/submit?url=&#39; + encodeURIComponent(window.location); return false">
+      <svg width="31" height="27" viewBox="0 0 31 27" xmlns="http://www.w3.org/2000/svg"><title>Shape</title><path d="M7.553 15.107a1.888 1.888 0 1 1 3.777 0 1.888 1.888 0 0 1-3.777 0zm11.33 0a1.888 1.888 0 1 1 3.777 0 1.888 1.888 0 0 1-3.776 0zm.093 4.036a1.12 1.12 0 0 1 1.387 1.762c-1.354 1.066-3.418 1.756-5.256 1.756-1.84 0-3.903-.688-5.257-1.755a1.12 1.12 0 0 1 1.388-1.762c.78.614 2.323 1.275 3.87 1.275 1.545 0 3.088-.66 3.868-1.275zm11.238-7.812a3.777 3.777 0 0 0-7.077-1.834c-1.942-1.062-4.307-1.748-6.883-1.906l2.254-5.062 4.313 1.246A2.833 2.833 0 1 0 23 1.49L18.19.103a1.12 1.12 0 0 0-1.334.62L13.794 7.6c-2.512.177-4.817.856-6.716 1.895a3.777 3.777 0 1 0-4.824 5.29 6.917 6.917 0 0 0-.366 2.21c0 5.215 5.918 9.442 13.22 9.442 7.3 0 13.218-4.227 13.218-9.44 0-.763-.127-1.502-.365-2.21a3.776 3.776 0 0 0 2.254-3.456zm-4.72-9.56a1.062 1.062 0 1 1 0 2.126 1.062 1.062 0 0 1 0-2.125zM1.887 11.33a1.89 1.89 0 0 1 1.89-1.888 1.89 1.89 0 0 1 1.706 1.08c-.987.75-1.805 1.613-2.41 2.56a1.892 1.892 0 0 1-1.186-1.75zm13.22 12.865c-6.063 0-10.977-3.223-10.977-7.2 0-3.975 4.915-7.2 10.977-7.2s10.976 3.224 10.976 7.2c0 3.977-4.914 7.2-10.976 7.2zM27.14 13.083c-.605-.948-1.423-1.81-2.41-2.56a1.89 1.89 0 0 1 1.707-1.08 1.89 1.89 0 0 1 1.89 1.887 1.89 1.89 0 0 1-1.187 1.753z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+  <li>
+    <a href="mailto:?subject=Splash%20Screens%20the%20Right%20Way&amp;body=https://www.bignerdranch.com/blog//blog/splash-screens-the-right-way/">
+      <svg width="27" height="20" viewBox="0 0 27 20" xmlns="http://www.w3.org/2000/svg"><title>Combined Shape</title><path d="M13.5 14.933a2.75 2.75 0 0 1-1.95-.804l-.025-.028-1.512-1.643a.968.968 0 0 0-1.39-.05l-7.066 6.898c-.39.382-.27.692.284.692H25.17c.548 0 .67-.315.283-.692l-7.072-6.9a.966.966 0 0 0-1.388.046l-1.54 1.675a2.75 2.75 0 0 1-1.95.803zM25.453.733C25.825.327 25.69 0 25.12 0H1.88c-.557 0-.7.333-.333.732L12.77 12.934c.393.38 1.067.38 1.46 0L25.453.732zM.683 2.314C.306 1.905 0 2.025 0 2.577v14.86c0 .555.32.692.71.31l6.754-6.592c.392-.384.41-1.02.028-1.437L.682 2.315zM26.29 17.74c.392.383.71.243.71-.31V2.577c0-.555-.3-.678-.683-.262l-6.81 7.402a1.04 1.04 0 0 0 .03 1.436l6.752 6.587z" fill-rule="evenodd"></path></svg>
+    </a>
+  </li>
+</ul>
+
+      </div>
+
+      <div class="blog__more-posts">
+        <div class="blog__author">
+          <img class="blog__author-img" src="./Splash Screens the Right Way_files/chris-stewart.jpg" alt="Chris Stewart">
+          <div class="blog__author-details">
+            <div class="blog__author-spacer">
+              <div>
+                <div class="t-label">more by</div>
+                <a class="blog__author-link" href="https://www.bignerdranch.com/about/the-team/chris-stewart">Chris Stewart</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="l-container">
+    <div class="l-padding-vert-lg">
+      <a class="blog__cta" href="https://www.bignerdranch.com/work/">
+        <img src="./Splash Screens the Right Way_files/devices.svg" alt="Considering building an app?">
+        <div class="blog__cta-details">
+          <h2 class="blog__cta-heading">Considering building an app?</h2>
+          <p class="blog__cta-text">See how our approach stands out from the crowd and helps your company meet its goals.</p>
+          <p class="blog__cta-link">discover</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="s-background-white">
+  <div class="l-container">
+    <div class="l-padding-top-xxl l-padding-bottom-sm">
+      <h2 class="t-small-caps">Related Posts:</h2>
+    </div>
+
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <article class="blog__related-posts">
+            <a href="https://www.bignerdranch.com/blog/what-first-party-kotlin-support-means-for-your-business/">What First-Party Kotlin Support Means for Your Business</a>
+            <p>Chris Stewart</p>
+          </article>
+        
+      
+    
+      
+        
+      
+    
+      
+        
+      
+    
+      
+        
+          <article class="blog__related-posts">
+            <a href="https://www.bignerdranch.com/blog/an-introduction-to-kotlin-on-android/">An Introduction to Kotlin on Android</a>
+            <p>David Greenhalgh</p>
+          </article>
+        
+      
+    
+      
+        
+          <article class="blog__related-posts">
+            <a href="https://www.bignerdranch.com/blog/google-io-2017-ai-democratized/">Google I/O 2017: AI, Democratized</a>
+            <p>David Greenhalgh</p>
+          </article>
+        
+      
+    
+      
+        
+          <article class="blog__related-posts">
+            <a href="https://www.bignerdranch.com/blog/android-o-get-ready-for-adaptive-icons/">Android O: Get Ready for Adaptive Icons</a>
+            <p>Zack Simon</p>
+          </article>
+        
+      
+        
+      
+    
+      
+        
+      
+        
+      
+    
+      
+        
+      
+    
+
+    <div class="l-padding-vert-lg">
+      <h2>Recent Comments</h2>
+      <div id="disqus_thread"><iframe id="dsq-app1" name="dsq-app1" allowtransparency="true" frameborder="0" scrolling="no" tabindex="0" title="Disqus" width="100%" src="./Splash Screens the Right Way_files/saved_resource.html" style="width: 1px !important; min-width: 100% !important; border: none !important; overflow: hidden !important; height: 6659px !important;" horizontalscrolling="no" verticalscrolling="no"></iframe></div>
+      
+    </div>
+  </div>
+</section>
+
+      </div>
+    <footer class="footer">
+  <div class="l-container">
+    <div class="footer__layout">
+      <nav>
+        <ul class="footer__icons">
+          <li><a href="https://twitter.com/bignerdranch" target="_blank" title="Twitter"><svg width="24" height="19" viewBox="0 0 24 19" xmlns="http://www.w3.org/2000/svg"><title>Twitter</title><path d="M20.608 2.923c1.023-.585 1.754-1.608 2.046-2.63-.877.584-1.9.876-3.07 1.17C18.71.584 17.393 0 16.078 0c-2.63 0-4.823 2.192-4.823 4.823 0 .44 0 .73.146 1.023C7.454 5.7 3.8 3.8 1.462.876c-.44.732-.585 1.61-.585 2.486 0 1.607.877 3.07 2.192 3.946-.732 0-1.462-.293-2.193-.585 0 2.34 1.608 4.24 3.8 4.677-.292 0-.73.146-1.17.146-.292 0-.584 0-.876-.146.585 1.9 2.34 3.362 4.532 3.362-1.608 1.315-3.654 2.046-5.993 2.046H0C2.046 18.123 4.385 18.854 6.87 19h1.168c8.33-.438 13.008-7.454 13.008-13.592v-.585c.877-.73 1.754-1.46 2.34-2.485-.878.147-1.755.44-2.778.585z" fill="#CBCDD0" fill-rule="evenodd"></path></svg></a></li>
+          <li><a href="https://www.facebook.com/bignerdranch" target="_blank" title="Facebook"><svg width="11" height="23" viewBox="0 0 11 23" xmlns="http://www.w3.org/2000/svg"><title>Facebook</title><path d="M7.188 5.03c0-.43.287-.718.718-.718h2.875V0H5.75a3.56 3.56 0 0 0-3.594 3.594v4.312H0v4.313h2.156V23h5.03l.002-10.78h2.875l.718-4.314H7.19V5.03z" fill="#CBCDD0" fill-rule="evenodd"></path></svg></a></li>
+          <li><a href="https://instagram.com/bignerdranch" target="_blank" title="Instagram"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Instagram</title><path d="M7 11.5A4.5 4.5 0 0 1 11.5 7 4.5 4.5 0 1 1 7 11.5zm12.304-.528c.05.337.08.68.08 1.03a7.385 7.385 0 0 1-14.767 0c0-.35.032-.693.082-1.03a7.37 7.37 0 0 1 .2-.97H3v10.077c0 .508.412.92.924.92h16.153c.51 0 .923-.412.923-.922V10h-1.898c.088.316.154.64.202.972zM20.08 3H17.92c-.51 0-.918.41-.918.918V6.08c0 .508.41.92.918.92h2.163a.92.92 0 0 0 .92-.92V3.92A.917.917 0 0 0 20.08 3zM24 2.77A2.77 2.77 0 0 0 21.23 0H2.77A2.77 2.77 0 0 0 0 2.77v18.46A2.77 2.77 0 0 0 2.77 24H21.23A2.77 2.77 0 0 0 24 21.23V2.77z" fill="#CBCDD0" fill-rule="evenodd"></path></svg></a></li>
+          <li><a href="https://github.com/bignerdranch" target="_blank" title="Github"><svg width="26" height="26" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg"><title>Github</title><path d="M13 0C5.822 0 0 5.82 0 13c0 5.744 3.725 10.617 8.89 12.336.65.12.86-.283.86-.625v-2.42c-3.616.787-4.37-1.533-4.37-1.533-.59-1.503-1.443-1.903-1.443-1.903-1.18-.807.09-.79.09-.79 1.305.092 1.992 1.34 1.992 1.34 1.158 1.988 3.04 1.413 3.782 1.08.116-.84.453-1.413.825-1.737-2.887-.33-5.922-1.445-5.922-6.425 0-1.42.508-2.58 1.34-3.49-.135-.328-.58-1.65.126-3.44 0 0 1.093-.35 3.577 1.332A12.468 12.468 0 0 1 13 6.287c1.105.005 2.218.15 3.256.437 2.482-1.68 3.572-1.332 3.572-1.332.708 1.79.262 3.113.128 3.44.834.91 1.338 2.07 1.338 3.49 0 4.993-3.04 6.092-5.936 6.414.466.403.892 1.194.892 2.407v3.568c0 .346.208.753.868.625C22.28 23.613 26 18.742 26 13c0-7.18-5.82-13-13-13z" fill="#CBCDD0" fill-rule="evenodd"></path></svg></a></li>
+          <li><a href="https://www.linkedin.com/company/bignerdranch" target="_blank" title="LinkedIn"><svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedI</title><path d="M22.228 0H1.773C.793 0 0 .77 0 1.72v20.56C0 23.23.794 24 1.773 24h20.455c.98 0 1.772-.77 1.772-1.72V1.72C24 .77 23.207 0 22.228 0zM7.276 20.09H3.65V9.254h3.626V20.09zM5.463 7.774H5.44c-1.217 0-2.005-.832-2.005-1.873 0-1.06.81-1.87 2.05-1.87 1.24 0 2.004.808 2.028 1.87 0 1.042-.786 1.874-2.05 1.874zM20.347 20.09h-3.625v-5.798c0-1.457-.525-2.45-1.836-2.45-1.003 0-1.598.67-1.86 1.317-.096.23-.12.554-.12.877v6.052H9.28s.05-9.82 0-10.836h3.626v1.536c.48-.738 1.34-1.79 3.266-1.79 2.386 0 4.175 1.547 4.175 4.876v6.214zm-7.464-9.236c.01-.02.028-.042.044-.064v.064h-.044z" fill="#CBCDD0" fill-rule="evenodd"></path></svg></a></li>
+          <li><a href="https://www.youtube.com/user/BigNerdRanchVideo" target="_blank" title="Youtube"><svg width="26" height="21" viewBox="0 0 26 21" xmlns="http://www.w3.org/2000/svg"><title>Youtube</title><path d="M22.75 0H3.25C1.463 0 0 1.684 0 3.742v13.1c0 2.057 1.463 3.74 3.25 3.74h19.5c1.788 0 3.25-1.683 3.25-3.74V3.74C26 1.684 24.538 0 22.75 0zm-13 5.417v9.953l8.294-4.977L9.75 5.417z" fill="#CBCDD0" fill-rule="evenodd"></path></svg></a></li>
+        </ul>
+      </nav>
+      <a class="footer__subscribe" href="http://www2.bignerdranch.com/emailpreferencecenter">Subscribe to our Newsletter</a>
+      <small class="footer__copyright">Copyright© 1998 - 2017 Big Nerd Ranch, LLC. All Rights Reserved. | <a href="https://www.bignerdranch.com/privacy-policy">Privacy Policy</a></small>
+    </div>
+  </div>
+</footer>
+
+    
+      
+        <script type="text/javascript">
+  var disqus_shortname = 'bignerdranch';
+  (function() {
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the &lt;a href="http://disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;</noscript>
+
+      
+    
+    <script src="./Splash Screens the Right Way_files/index.min.js.download"></script><iframe style="display: none;" src="./Splash Screens the Right Way_files/saved_resource(3).html"></iframe>
+  
+
+<script src="./Splash Screens the Right Way_files/saved_resource" type="text/javascript"></script><script type="text/javascript" id="">/*
+ @preserve
+ jquery.scrolldepth.js | v0.4.1
+ Copyright (c) 2014 Rob Flaherty (@robflaherty)
+ Licensed under the MIT and GPL licenses.
+*/
+(function(c,h,m,u){var n={elements:[],minHeight:0,percentage:!0,testing:!1},k=c(h),f=[];c.scrollDepth=function(d){function l(a,b,e){d.testing?c("#console").html(a+": "+b):"undefined"!==typeof dataLayer?(dataLayer.push({event:"ScrollDistance",eventCategory:"Scroll Depth",eventAction:a,eventLabel:b,eventValue:1,eventNonInteraction:!0}),2<arguments.length&&dataLayer.push({event:"ScrollTiming",eventCategory:"Scroll Depth",eventAction:a,eventLabel:b,eventTiming:e})):("undefined"!==typeof ga&&(ga("send",
+"event","Scroll Depth",a,b,1,{nonInteraction:1}),2<arguments.length&&ga("send","timing","Scroll Depth",a,e,b)),"undefined"!==typeof _gaq&&(_gaq.push(["_trackEvent","Scroll Depth",a,b,1,!0]),2<arguments.length&&_gaq.push(["_trackTiming","Scroll Depth",a,e,b,100])))}function p(a,b,e){c.each(a,function(a,g){-1===c.inArray(a,f)&&b>=g&&(l("Percentage",a,e),f.push(a))})}function q(a,b,e){c.each(a,function(a,g){-1===c.inArray(g,f)&&c(g).length&&b>=c(g).offset().top&&(l("Elements",g,e),f.push(g))})}function r(a,
+b){var e,c,g,d=null,f=0,k=function(){f=new Date;d=null;g=a.apply(e,c)};return function(){var h=new Date;f||(f=h);var l=b-(h-f);e=this;c=arguments;0>=l?(clearTimeout(d),d=null,f=h,g=a.apply(e,c)):d||(d=setTimeout(k,l));return g}}var t=+new Date;d=c.extend({},n,d);c(m).height()<d.minHeight||(l("Percentage","Baseline"),k.on("scroll.scrollDepth",r(function(){var a=c(m).height(),b=h.innerHeight?h.innerHeight:k.height(),b=k.scrollTop()+b,a={"25%":parseInt(.25*a,10),"50%":parseInt(.5*a,10),"75%":parseInt(.75*
+a,10),"100%":a-1},e=+new Date-t;f.length>=4+d.elements.length?k.off("scroll.scrollDepth"):(d.elements&&q(d.elements,b,e),d.percentage&&p(a,b,e))},500)))}})(jQuery,window,document);jQuery.scrollDepth();</script><img src="./Splash Screens the Right Way_files/seg" width="1" height="1" border="0" alt="" style="display: none;"><img src="./Splash Screens the Right Way_files/pixel" width="1" height="1" border="0" alt="" style="display: none;"><script src="./Splash Screens the Right Way_files/adsct" type="text/javascript"></script></body></html>

@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance -->
+<html itemscope="" itemtype="http://schema.org/QAPage"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>android - Extremely Laggy RecyclerView Performance - Stack Overflow</title>
+    <link rel="shortcut icon" href="https://cdn.sstatic.net/Sites/stackoverflow/img/favicon.ico?v=4f32ecc8f43d">
+    <link rel="apple-touch-icon image_src" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+    <link rel="search" type="application/opensearchdescription+xml" title="Stack Overflow" href="https://stackoverflow.com/opensearch.xml">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+        <meta name="twitter:domain" content="stackoverflow.com">
+
+    <meta property="og:image" itemprop="image primaryImageOfPage" content="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon@2.png?v=73d79a89bded">
+    <meta name="twitter:title" property="og:title" itemprop="title name" content="Extremely Laggy RecyclerView Performance">
+    <meta name="twitter:description" property="og:description" itemprop="description" content="I have a RecyclerView implementation inside of a ViewPager, and its performance is pretty horrible. Here&#39;s a video of the performance in question. I have two view types, and am using the ViewHolder ">
+    <meta property="og:url" content="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance">
+    <link rel="canonical" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance">
+
+    
+    
+    <script type="text/javascript" async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/ados"></script><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/quant.js.download"></script><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/beacon.js.download"></script><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/analytics.js.download"></script><script type="text/javascript" async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/ados.js.download"></script><script src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/jquery.min.js.download"></script>
+    <script src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/stub.en.js.download"></script>
+    <link rel="stylesheet" type="text/css" href="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/all.css">
+
+            <link rel="alternate" type="application/atom+xml" title="Feed for question &#39;Extremely Laggy RecyclerView Performance&#39;" href="https://stackoverflow.com/feeds/question/33354934">
+            <meta name="twitter:app:country" content="US">
+            <meta name="twitter:app:name:iphone" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:iphone" content="871299723">
+            <meta name="twitter:app:url:iphone" content="se-zaphod://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance">
+            <meta name="twitter:app:name:ipad" content="Stack Exchange iOS">
+            <meta name="twitter:app:id:ipad" content="871299723">
+            <meta name="twitter:app:url:ipad" content="se-zaphod://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance">
+            <meta name="twitter:app:name:googleplay" content="Stack Exchange Android">
+            <meta name="twitter:app:url:googleplay" content="http://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance">
+            <meta name="twitter:app:id:googleplay" content="com.stackexchange.marvin">
+        <script>
+        
+            StackExchange.ready(function () {
+                                    
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.initSnippetRenderer();
+                    });
+                    
+
+                StackExchange.using("postValidation", function () {
+                    StackExchange.postValidation.initOnBlurAndSubmit($('#post-form'), 2, 'answer');
+                });
+
+                
+                StackExchange.question.init({showAnswerHelp:true,totalCommentCount:6,shownCommentCount:5,highlightColor:'#F4A83D',backgroundColor:'#FFF',questionId:33354934});
+
+                styleCode();
+
+                    StackExchange.realtime.subscribeToQuestion('1', '33354934');
+                                                                    StackExchange.using("gps", function () { StackExchange.gps.trackOutboundClicks('#content', '.post-text', true); });
+
+            });
+        </script>
+
+
+    <script>
+        StackExchange.init({"locale":"en","stackAuthUrl":"https://stackauth.com","networkMetaHostname":"meta.stackexchange.com","serverTime":1496170774,"routeName":"Questions/Show","site":{"name":"Stack Overflow","description":"Q&A for professional and enthusiast programmers","isNoticesTabEnabled":true,"recaptchaPublicKey":"6LdchgIAAAAAAJwGpIzRQSOFaO0pU6s44Xt8aTwc","recaptchaAudioLang":"en","enableNewTagCreationWarning":true,"insertSpaceAfterNameTabCompletion":false,"id":1,"enableInsertDocLinkDialog":true,"childUrl":"https://meta.stackoverflow.com","enableSocialMediaInSharePopup":true,"protocol":"https"},"user":{"fkey":"533804115ee63dacd93681382f5f214c","rep":0,"isAnonymous":true,"isAnonymousNetworkWide":true,"canSeeNewHeaderDesign":true,"ab":{"devstory_timeline_exp":{"v":"new_add_item_interaction","g":2}}},"events":{"postType":{"question":1},"postEditionSection":{"title":1,"body":2,"tags":3}},"story":{"minCompleteBodyLength":75,"likedTagsMaxLength":300,"dislikedTagsMaxLength":300}}, {"site":{"allowImageUploads":true,"enableUserHovercards":true,"styleCode":true,"enableNewLinkInsertDialog":true,"enableImgurHttps":true,"forceHttpsImages":true},"comments":{},"userProfile":{"openGraphAPIKey":"58740831ad23540e00c58987"},"tags":{},"accounts":{"currentPasswordRequiredForChangingStackIdPassword":true},"flags":{"allowRetractingFlags":true},"snippets":{"snippetsEnabled":true,"renderDomain":"stacksnippets.net"},"markdown":{"asteriskIntraWordEmphasis":true},"monitoring":{"clientTimingsAbsoluteTimeout":30000,"clientTimingsDebounceTimeout":1000}});
+        StackExchange.using.setCacheBreakers({"js/prettify-full.en.js":"ede089fd9ead","js/moderator.en.js":"62b35df25ec5","js/full-anon.en.js":"2c0f98875233","js/full.en.js":"ec1695529cf8","js/wmd.en.js":"237cdc972847","js/third-party/jquery.autocomplete.min.js":"d3b8fa7fdf74","js/third-party/jquery.autocomplete.min.en.js":"","js/mobile.en.js":"cd655e38a168","js/help.en.js":"a2f92aacc060","js/tageditor.en.js":"cfcaf4045880","js/tageditornew.en.js":"77fbda144f84","js/inline-tag-editing.en.js":"7581a98341e4","js/revisions.en.js":"cf90cfea0ccf","js/review.en.js":"1d02455e276c","js/tagsuggestions.en.js":"91ec144ebee0","js/post-validation.en.js":"a4307119541f","js/explore-qlist.en.js":"d33e3ab2f2e0","js/events.en.js":"02f7dc32ee4c","js/keyboard-shortcuts.en.js":"b00f068588a1","js/external-editor.en.js":"dec8b7cab79e","js/adops.en.js":"9a6a7812a212","js/external-editor.en.js":"dec8b7cab79e","js/snippet-javascript.en.js":"8949a8564319","js/snippet-javascript-codemirror.en.js":"41db051951eb"});
+        StackExchange.using("gps", function() {
+             StackExchange.gps.init(true);
+        });
+    </script>
+    
+        <script>
+            StackExchange.ready(function () {
+                $('#nav-tour').click(function () {
+                    StackExchange.using("gps", function() {
+                        StackExchange.gps.track("aboutpage.click", { aboutclick_location: "headermain" }, true);
+                    });
+                });
+            });
+        </script>
+    <noscript id="noscript-css">&lt;style type="text/css"&gt;body,.so-header{margin-top:1.9em}&lt;/style&gt;</noscript>
+<script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/full-anon.en.js.download"></script><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/snippet-javascript.en.js.download"></script><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/post-validation.en.js.download"></script><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/prettify-full.en.js.download"></script><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/external-editor.en.js.download"></script><script type="text/javascript" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/adFeedback.js.download"></script><link rel="stylesheet" href="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/adFeedback.css"></head>
+<body class="question-page new-topbar">
+            <script>(function () { var old = $.fn.contents; $.fn.contents = function () { try { return old.apply(this, arguments); } catch (e) { return $([]); } } })()</script>
+        
+
+    <div id="notify-container"></div>
+    <div id="custom-header"></div>
+
+
+<header class="so-header js-so-header _fixed _scrolling">
+    <div class="-container">
+        <div class="-main">            
+            <a href="https://stackoverflow.com/" class="-logo js-gps-track " data-gps-track="top_nav.click({is_current:false, location:2, destination:8})">
+
+                <span class="-img">Stack Overflow</span>
+            </a>
+
+            <nav class="navigation" role="navigation" aria-label="site navigation">
+                <ol class="-list">
+                        <li class="-item _current">
+        <a id="nav-questions" href="https://stackoverflow.com/questions" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:true, location:2, destination:1})">Questions</a>
+    </li>
+
+    <li class="-item">
+        <a id="nav-jobs" href="https://stackoverflow.com/jobs?med=site-ui&amp;ref=jobs-tab" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:6})">Jobs</a>
+    </li>
+                        <li class="-item">
+        <a id="nav-docs" href="https://stackoverflow.com/documentation" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:7})">Documentation <small class="beta-badge">beta</small></a>
+    </li>
+                        <li class="-item">
+        <a id="nav-tags" href="https://stackoverflow.com/tags" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:2})">Tags</a>
+    </li>
+
+                        <li class="-item">
+        <a id="nav-users" href="https://stackoverflow.com/users" class="-link js-gps-track" data-gps-track="top_nav.click({is_current:false, location:2, destination:3})">Users</a>
+    </li>
+
+                </ol>
+            </nav>
+
+                <form id="search" action="https://stackoverflow.com/search" method="get" class="searchbar" autocomplete="off" role="search">
+                    <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    <input name="q" type="text" placeholder="Search..." value="" tabindex="1" autocomplete="off" maxlength="240" class="f-input js-search-field">
+                    <button type="submit" class="btn js-search-submit">
+                        <svg role="icon" class="svg-icon iconSearch" width="18" height="18" viewBox="0 0 18 18"><path d="M12.864 11.321L18 16.5 16.5 18l-5.178-5.136v-.357a7 7 0 1 1 1.186-1.186h.356zM7 12A5 5 0 1 0 7 2a5 5 0 0 0 0 10z"></path></svg>
+                    </button>
+                </form>
+
+        </div>
+        
+
+
+    
+
+<div class="-actions">
+    <nav class="secondary-nav">
+        <div class="-dialog-container js-topbar-dialog-corral">
+
+
+    <div class="topbar-dialog siteSwitcher-dialog dno">
+        <div class="header">
+            <h3><a href="https://stackoverflow.com/">current community</a>
+            </h3>
+        </div>
+        <div class="modal-content current-site-container">
+            <ul class="current-site">
+                    <li>
+                            <div class="related-links">
+            <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:14 })">help</a>
+                    <a href="https://chat.stackoverflow.com/" class="js-gps-track" data-gps-track="site_switcher.click({ item_type:6 })">chat</a>
+            </div>
+
+    <a href="https://stackoverflow.com/" class="current-site-link site-link js-gps-track" data-id="1" data-gps-track="site_switcher.click({ item_type:3 })">
+        <div class="site-icon favicon favicon-stackoverflow" title="Stack Overflow"></div>
+        Stack Overflow
+    </a>
+
+                    </li>
+                    <li class="related-site">
+                            <div class="L-shaped-icon-container">
+        <span class="L-shaped-icon"></span>
+    </div>
+
+                        
+    <a href="https://meta.stackoverflow.com/" class="site-link js-gps-track" data-id="552" data-gps-track="site.switch({ target_site:552, item_type:3 }),site_switcher.click({ item_type:4 })">
+        <div class="site-icon favicon favicon-stackoverflowmeta" title="Meta Stack Overflow"></div>
+        Meta Stack Overflow
+    </a>
+
+                    </li>
+            </ul>
+        </div>
+
+        <div class="header" id="your-communities-header">
+            <h3>
+your communities            </h3>
+
+        </div>
+        <div class="modal-content" id="your-communities-section">
+
+                <div class="call-to-login">
+<a href="https://stackoverflow.com/users/signup?ssrc=site_switcher&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:10 })">Sign up</a> or <a href="https://stackoverflow.com/users/login?ssrc=site_switcher&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f33354934%2fextremely-laggy-recyclerview-performance" class="login-link js-gps-track" data-gps-track="site_switcher.click({ item_type:11 })">log in</a> to customize your list.
+                </div>
+        </div>
+
+        <div class="header">
+            <h3><a href="https://stackexchange.com/sites">more stack exchange communities</a>
+            </h3>
+            <a href="https://stackoverflow.blog/" class="fr">company blog</a>
+        </div>
+        <div class="modal-content">
+                <div class="child-content"></div>
+        </div>        
+    </div>
+                <div class="topbar-dialog help-dialog js-help-dialog dno">
+        <div class="modal-content">
+            <ul>
+                                    <li>
+                        <a href="https://stackoverflow.com/tour" class="js-gps-track" data-gps-track="help_popup.click({ item_type:1 })">
+                            Tour
+                            <span class="item-summary">
+                                Start here for a quick overview of the site
+                            </span>
+                        </a>
+                    </li>
+                <li>
+                    <a href="https://stackoverflow.com/help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:4 })">
+                        Help Center
+                        <span class="item-summary">
+                            Detailed answers to any questions you might have
+                        </span>
+                    </a>
+                </li>
+                        <li>
+                            <a href="https://meta.stackoverflow.com/" class="js-gps-track" data-gps-track="help_popup.click({ item_type:2 })">
+                                Meta
+                                <span class="item-summary">
+                                    Discuss the workings and policies of this site
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://stackoverflow.com/company/about" class="js-gps-track" data-gps-track="help_popup.click({ item_type:6 })">
+                                About Us
+                                <span class="item-summary">
+                                    Learn more about Stack Overflow the company
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.stackoverflowbusiness.com/?ref=topbar_help" class="js-gps-track" data-gps-track="help_popup.click({ item_type:7 })">
+                                Business
+                                <span class="item-summary">
+                                    Learn more about hiring developers or posting ads with us
+                                </span>
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+
+        </div>
+        <ol class="-list">
+
+
+    <li class="-item"><a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#" class="-link js-help-button" title="Help Center and other resources">
+        <svg role="icon" class="svg-icon iconHelp" width="18" height="18" viewBox="0 0 18 18"><path d="M9 1a8 8 0 1 0 0 16.001A8 8 0 0 0 9 1zm.812 12.126c-.02.716-.55 1.157-1.238 1.137-.659-.02-1.177-.49-1.157-1.209.02-.715.566-1.17 1.225-1.15.691.021 1.194.507 1.17 1.222zm1.956-5.114c-.168.237-.546.542-1.02.912l-.527.361c-.257.197-.417.43-.502.695-.044.141-.076.507-.084.752-.004.048-.032.156-.181.156H7.883c-.165 0-.185-.096-.18-.144.023-.667.12-1.218.397-1.66.374-.594 1.426-1.221 1.426-1.221.161-.12.286-.25.382-.39.177-.24.321-.51.321-.8 0-.333-.08-.65-.293-.915-.249-.31-.518-.458-1.036-.458-.51 0-.808.257-1.021.594-.213.338-.177.735-.177 1.097H5.746c0-1.366.357-2.238 1.112-2.752.51-.35 1.162-.502 1.921-.502.996 0 1.788.184 2.487.715.647.49.988 1.181.988 2.113 0 .575-.2 1.057-.486 1.447z"></path></svg>
+    </a></li>
+                <li class="-item">
+        <a href="https://stackexchange.com/" class="-link js-site-switcher-button js-gps-track" data-gps-track="site_switcher.show" title="A list of all 167 Stack Exchange sites">
+            <svg role="icon" class="svg-icon iconStackExchange" width="18" height="18" viewBox="0 0 18 18"><path d="M1 13a2 2 0 0 0 2 2h8v3l3-3h1a2 2 0 0 0 2-2v-2H1v2zM15 1H3a2 2 0 0 0-2 2v2h16V3a2 2 0 0 0-2-2zM1 6h16v4H1V6z"></path></svg>
+        </a>
+    </li>
+
+
+        </ol>
+    </nav>
+        <div class="-ctas">
+                <a href="https://stackoverflow.com/users/login?ssrc=head&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f33354934%2fextremely-laggy-recyclerview-performance" class="login-link btn-clear" rel="nofollow">Log In</a>
+                    <a href="https://stackoverflow.com/users/signup?ssrc=head&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;utm_source=stackoverflow.com&amp;utm_medium=dev-story&amp;utm_campaign=signup-redirect" class="login-link btn" rel="nofollow">Sign Up</a>
+
+        </div>
+</div>
+    </div>
+</header>
+
+    <script>
+        StackExchange.ready(function () { StackExchange.topbar.init(); });
+            StackExchange.scrollPadding.setPaddingTop(60, 10);     </script>
+
+    <div class="container">
+        
+
+
+        <div id="content" class="snippet-hidden">
+
+
+
+            
+
+<div itemscope="" itemtype="http://schema.org/Question">
+    <link itemprop="image" href="https://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png?v=c78bd457575a">
+
+
+<div id="herobox" class="alternate">
+    <div class="test"></div>
+        <div id="close">
+            <a title="click to minimize"><span>x</span> Dismiss</a>
+        </div>
+    <div class="content">
+        <b>Join the Stack Overflow Community</b>
+        <div class="separator"></div>
+        <div class="blurb">
+            Stack Overflow is a community of 7.2 million programmers, just like you, helping each other.
+                <br>
+Join them; it only takes a minute:                <br>
+        </div>
+        <a href="https://stackoverflow.com/users/signup?ssrc=hero&amp;returnurl=%2fusers%2fstory%2fcurrent&amp;amp;utm_source=stackoverflow.com&amp;amp;utm_medium=dev-story&amp;amp;utm_campaign=signup-redirect" id="tell-me-more" class="button">Sign up</a>
+    </div>
+</div>
+<script>
+    StackExchange.ready(function () {
+
+        var location = 0;
+        if ($("body").hasClass("questions-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("question-page")) {
+            location = 1;;
+        } else if ($("body").hasClass("faq-page")) {
+            location = 5;;
+        } else if ($("body").hasClass("home-page")) {
+            location = 3;;
+        }
+        
+        $('#tell-me-more').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: 'cta', location: location }, true);
+            });
+        });
+        
+        $('#herobox #close').click(function () {
+            StackExchange.using("gps", function () {
+                StackExchange.gps.track("hero.action", { hero_action_type: "minimize", location: location }, true);
+            });
+            
+            $.cookie("hero", "mini", { path: "/", expires: 365 });
+            $.ajax({
+                url: "/hero-mini",
+                success: function (data) {
+                    $("#herobox").fadeOut("fast", function () {
+                        $("#herobox").replaceWith(data);
+                        $("#herobox-mini").fadeIn("fast");
+                    });
+                }
+            });
+            return false;
+        });
+    });
+
+</script>			<div id="question-header">
+                <h1 itemprop="name"><a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance" class="question-hyperlink">Extremely Laggy RecyclerView Performance</a></h1>
+
+            
+<div class="aside-cta" role="navigation" aria-label="ask new question">
+    <a href="https://stackoverflow.com/questions/ask" class="btn-outlined">Ask Question</a>
+</div>
+		</div>
+			<div id="mainbar" role="main" aria-label="question and answers">
+
+			
+
+<div class="question" data-questionid="33354934" id="question">
+
+    <script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk1677279481",4).setZone(43); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk1677279481"><a href="https://engine.adzerk.net/r?e=eyJhdiI6NDE0LCJhdCI6NCwiYnQiOjAsImNtIjo0NzE0OTMsImNoIjoxMTc4LCJjayI6e30sImNyIjoxNjI3NzYzLCJkaSI6ImEyMDQ4MTUwZTNlODQ5ZWQ5NzQ4ZDBjMDk1N2U4NDIxIiwiZG0iOjEsImZjIjoxOTI0NDQyLCJmbCI6MjE0MjMxMiwiaXAiOiIxMTQuNS4zNi45OSIsImt3IjoiYW5kcm9pZCxhZGFwdGVyLHJlY3ljbGVydmlldyxsYWciLCJudyI6MjIsInBjIjowLCJlYyI6MCwicHIiOjE2MDQsInJ0IjoxLCJyZiI6Imh0dHBzOi8vd3d3Lmdvb2dsZS5jby5pZC8iLCJzYiI6ImktMDNkNDk4ZjljZmU0MzBhM2UiLCJzcCI6MjM4MDMsInN0Ijo4Mjc3LCJ1ayI6InVlMS0xMWVlMTRkNTQ3NTg0Y2NlYTc4YmFhMjNhYzIyNWE1MiIsInpuIjo0MywidHMiOjE0OTYxNzA3ODQ0MDgsImJmIjp0cnVlLCJwbiI6ImFkemVyazE2NzcyNzk0ODEiLCJ1ciI6Imh0dHA6Ly9zdGFja292ZXJmbG93LmNvbS9qb2JzP3V0bV9zb3VyY2U9d2Vic2l0ZSZ1dG1fbWVkaXVtPWJhbm5lciZ1dG1fY29udGVudD1sZWFkZXJib2FyZF8yJnV0bV9jYW1wYWlnbj1ob3VzZV9hZHNfaG91c2VfYWRzX1JPU19TTyJ9&amp;s=uNF9gxzrE8SyUmQZnSk6ph_M_lY" rel="nofollow" target="_blank" title=""><img src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/6768ddb6a63e482c9c31155cdde7af9a.png" title="" alt="" border="0" width="728" height="90"></a><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/i.gif"></div>    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="33354934">
+        <a class="vote-up-off" title="This question shows research effort; it is useful and clear">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">4</span>
+        <a class="vote-down-off" title="This question does not show any research effort; it is unclear or not useful">down vote</a>
+
+        <a class="star-off" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#">favorite</a>
+        <div class="favoritecount"><b></b></div>
+
+
+</div>
+
+            </td>
+            
+<td class="postcell">
+<div>
+    <div class="post-text" itemprop="text">
+
+<p>I have a <code>RecyclerView</code> implementation inside of a <code>ViewPager</code>, and its performance is pretty horrible. <a href="https://vid.me/kxrC" rel="nofollow">Here's a video of the performance in question.</a> I have two view types, and am using the ViewHolder pattern (so it's not inflation or finding views causing the issue).</p>
+
+<p><a href="https://github.com/ccrama/Slide/blob/1c96e65734244f7e79a9b524e2bf80770b7731be/app/src/main/java/me/ccrama/redditslide/Adapters/CommentAdapter.java" rel="nofollow">Here's the adapter.</a></p>
+
+<p>Here's the cardview.xml file</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="tag">&lt;LinearLayout</span><span class="pln"> </span><span class="atn">xmlns:android</span><span class="pun">=</span><span class="atv">"http://schemas.android.com/apk/res/android"</span><span class="pln">
+</span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+
+</span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+
+</span><span class="atn">android:clipChildren</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+
+
+</span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"vertical"</span><span class="pln">
+
+</span><span class="atn">android:scrollbars</span><span class="pun">=</span><span class="atv">"none"</span><span class="tag">&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;LinearLayout</span><span class="pln">
+    </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/next"</span><span class="pln">
+    </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+    </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"2dp"</span><span class="pln">
+    </span><span class="atn">android:layout_marginBottom</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+    </span><span class="atn">android:elevation</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+    </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;LinearLayout</span><span class="pln"> </span><span class="atn">xmlns:android</span><span class="pun">=</span><span class="atv">"http://schemas.android.com/apk/res/android"</span><span class="pln">
+    </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/top"</span><span class="pln">
+    </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+    </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+    </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?attr/card_background"</span><span class="pln">
+    </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="tag">&gt;</span><span class="pln">
+
+
+    </span><span class="tag">&lt;LinearLayout</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/dots"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:layout_alignParentBottom</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+        </span><span class="atn">android:layout_alignParentLeft</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+
+        </span><span class="atn">android:layout_alignParentTop</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+
+        </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?attr/activity_background"</span><span class="pln">
+        </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="tag">&gt;</span><span class="pln">
+
+
+    </span><span class="tag">&lt;/LinearLayout&gt;</span><span class="pln">
+
+
+    </span><span class="tag">&lt;View</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/dot"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"3dp"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+
+        </span><span class="atn">android:layout_alignParentBottom</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+        </span><span class="atn">android:layout_alignParentTop</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+        </span><span class="atn">android:layout_toRightOf</span><span class="pun">=</span><span class="atv">"@id/dots"</span><span class="pln">
+        </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#fff"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+
+    </span><span class="tag">&lt;RelativeLayout</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/background"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:layout_toRightOf</span><span class="pun">=</span><span class="atv">"@+id/dot"</span><span class="pln">
+        </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"vertical"</span><span class="pln">
+        </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+
+        </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+        </span><span class="atn">android:paddingTop</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="tag">&gt;</span><span class="pln">
+
+
+        </span><span class="tag">&lt;include</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/children"</span><span class="pln">
+            </span><span class="atn">layout</span><span class="pun">=</span><span class="atv">"@layout/commentnumber"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"16dp"</span><span class="pln">
+            </span><span class="atn">android:layout_alignParentRight</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+
+            </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"right"</span><span class="pln">
+            </span><span class="atn">android:layout_marginBottom</span><span class="pun">=</span><span class="atv">"-16dp"</span><span class="pln">
+            </span><span class="atn">android:layout_marginLeft</span><span class="pun">=</span><span class="atv">"10dp"</span><span class="pln">
+            </span><span class="atn">android:gravity</span><span class="pun">=</span><span class="atv">"center_horizontal"</span><span class="pln">
+            </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+
+        </span><span class="tag">&lt;com.wefika.flowlayout.FlowLayout</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/flow"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+            </span><span class="atn">android:gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+            </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="pln">
+            </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"10dp"</span><span class="tag">&gt;</span><span class="pln">
+
+            </span><span class="tag">&lt;TextView</span><span class="pln">
+                </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/author"</span><span class="pln">
+                </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+                </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+                </span><span class="atn">android:gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+                </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+
+                </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"ccrama"</span><span class="pln">
+
+                </span><span class="atn">android:textColor</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln">
+                </span><span class="atn">android:textSize</span><span class="pun">=</span><span class="atv">"?attr/font_commenttitle"</span><span class="pln">
+                </span><span class="atn">android:textStyle</span><span class="pun">=</span><span class="atv">"bold"</span><span class="pln">
+
+                </span><span class="tag">/&gt;</span><span class="pln">
+
+            </span><span class="tag">&lt;TextView</span><span class="pln">
+                </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/score"</span><span class="pln">
+                </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+                </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+                </span><span class="atn">android:gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+                </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+                </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"+49"</span><span class="pln">
+                </span><span class="atn">android:textColor</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln">
+                </span><span class="atn">android:textSize</span><span class="pun">=</span><span class="atv">"?attr/font_commentinfo"</span><span class="pln">
+
+                </span><span class="atn">android:textStyle</span><span class="pun">=</span><span class="atv">"bold"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+            </span><span class="tag">&lt;TextView</span><span class="pln">
+                </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/time"</span><span class="pln">
+                </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+                </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+                </span><span class="atn">android:gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+                </span><span class="atn">android:layout_alignParentRight</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+                </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+                </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"4 hours ago"</span><span class="pln">
+
+                </span><span class="atn">android:textColor</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln">
+
+                </span><span class="atn">android:textSize</span><span class="pun">=</span><span class="atv">"?attr/font_commentinfo"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+            </span><span class="tag">&lt;include</span><span class="pln">
+                </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/gild"</span><span class="pln">
+                </span><span class="atn">layout</span><span class="pun">=</span><span class="atv">"@layout/gilded"</span><span class="pln">
+                </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+                </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"16dp"</span><span class="pln">
+
+                </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+                </span><span class="atn">android:gravity</span><span class="pun">=</span><span class="atv">"center_horizontal"</span><span class="pln">
+                </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="pln">
+                </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+            </span><span class="tag">&lt;include</span><span class="pln">
+                </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/flairbubble"</span><span class="pln">
+                </span><span class="atn">layout</span><span class="pun">=</span><span class="atv">"@layout/flair"</span><span class="pln">
+                </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+                </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"16dp"</span><span class="pln">
+
+                </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+                </span><span class="atn">android:layout_margin</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+
+                </span><span class="atn">android:layout_toRightOf</span><span class="pun">=</span><span class="atv">"@+id/pinned"</span><span class="pln">
+                </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/pinned"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+            </span><span class="tag">&lt;include</span><span class="pln">
+                </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/you"</span><span class="pln">
+                </span><span class="atn">layout</span><span class="pun">=</span><span class="atv">"@layout/you"</span><span class="pln">
+                </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+                </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"16dp"</span><span class="pln">
+
+                </span><span class="atn">android:layout_centerVertical</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+                </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+
+                </span><span class="atn">android:layout_toRightOf</span><span class="pun">=</span><span class="atv">"@+id/pinned"</span><span class="pln">
+                </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/pinned"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+            </span><span class="tag">&lt;include</span><span class="pln">
+                </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/op"</span><span class="pln">
+                </span><span class="atn">layout</span><span class="pun">=</span><span class="atv">"@layout/op"</span><span class="pln">
+                </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+                </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"16dp"</span><span class="pln">
+
+                </span><span class="atn">android:layout_marginLeft</span><span class="pun">=</span><span class="atv">"4dp"</span><span class="pln">
+                </span><span class="atn">android:layout_centerVertical</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+                </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center_vertical"</span><span class="pln">
+
+                </span><span class="atn">android:layout_toRightOf</span><span class="pun">=</span><span class="atv">"@+id/pinned"</span><span class="pln">
+                </span><span class="atn">android:paddingLeft</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:paddingRight</span><span class="pun">=</span><span class="atv">"5dp"</span><span class="pln">
+                </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/pinned"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;/com.wefika.flowlayout.FlowLayout&gt;</span><span class="pln">
+
+
+        </span><span class="tag">&lt;me.ccrama.redditslide.ActiveTextView</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/content"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:layout_below</span><span class="pun">=</span><span class="atv">"@+id/flow"</span><span class="pln">
+            </span><span class="atn">android:paddingBottom</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+
+            </span><span class="atn">android:textColor</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln">
+            </span><span class="atn">android:textSize</span><span class="pun">=</span><span class="atv">"?attr/font_commentbody"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+
+    </span><span class="tag">&lt;/RelativeLayout&gt;</span><span class="pln">
+
+
+
+
+</span><span class="tag">&lt;/LinearLayout&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;LinearLayout</span><span class="pln">
+    </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/menu"</span><span class="pln">
+    </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+    </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+    </span><span class="atn">android:layout_below</span><span class="pun">=</span><span class="atv">"@+id/background"</span><span class="pln">
+    </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="pln">
+    </span><span class="atn">android:weightSum</span><span class="pun">=</span><span class="atv">"4"</span><span class="tag">&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;ImageView</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/more"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+        </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+
+        </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?android:selectableItemBackground"</span><span class="pln">
+        </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"12dp"</span><span class="pln">
+        </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/more"</span><span class="pln">
+
+
+        </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+
+    </span><span class="tag">&lt;ImageView</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/downvote"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+        </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+        </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?android:selectableItemBackground"</span><span class="pln">
+        </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"12dp"</span><span class="pln">
+
+        </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/downvoteicon"</span><span class="pln">
+        </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;ImageView</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/upvote"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+        </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+        </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?android:selectableItemBackground"</span><span class="pln">
+        </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"12dp"</span><span class="pln">
+        </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/upvoteicon"</span><span class="pln">
+
+        </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;ImageView</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/reply"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+        </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+        </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?android:selectableItemBackground"</span><span class="pln">
+        </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"12dp"</span><span class="pln">
+
+        </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/reply"</span><span class="pln">
+        </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+</span><span class="tag">&lt;/LinearLayout&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;LinearLayout</span><span class="pln">
+    </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/replyArea"</span><span class="pln">
+    </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+    </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+    </span><span class="atn">android:layout_below</span><span class="pun">=</span><span class="atv">"@+id/menu"</span><span class="pln">
+
+    </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"vertical"</span><span class="pln">
+    </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"16dp"</span><span class="tag">&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;EditText</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/replyLine"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:backgroundTint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln">
+        </span><span class="atn">android:hint</span><span class="pun">=</span><span class="atv">"Reply"</span><span class="pln">
+        </span><span class="atn">android:imeOptions</span><span class="pun">=</span><span class="atv">"actionDone|flagNoEnterAction"</span><span class="pln">
+        </span><span class="atn">android:inputType</span><span class="pun">=</span><span class="atv">"textMultiLine|textAutoCorrect|textCapSentences"</span><span class="pln">
+        </span><span class="atn">android:minHeight</span><span class="pun">=</span><span class="atv">"30dp"</span><span class="pln">
+        </span><span class="atn">android:textColor</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln">
+        </span><span class="atn">android:textColorHint</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;RelativeLayout</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="tag">&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;TextView</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/discard"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?android:selectableItemBackground"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"4dp"</span><span class="pln">
+
+            </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"DISCARD"</span><span class="pln">
+            </span><span class="atn">android:textColor</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln">
+            </span><span class="atn">android:textSize</span><span class="pun">=</span><span class="atv">"14sp"</span><span class="pln">
+            </span><span class="atn">android:textStyle</span><span class="pun">=</span><span class="atv">"bold"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;TextView</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/send"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+            </span><span class="atn">android:layout_alignParentRight</span><span class="pun">=</span><span class="atv">"true"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"?android:selectableItemBackground"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"4dp"</span><span class="pln">
+
+            </span><span class="atn">android:text</span><span class="pun">=</span><span class="atv">"SUBMIT"</span><span class="pln">
+            </span><span class="atn">android:textColor</span><span class="pun">=</span><span class="atv">"?attr/font"</span><span class="pln">
+
+            </span><span class="atn">android:textSize</span><span class="pun">=</span><span class="atv">"14sp"</span><span class="pln">
+            </span><span class="atn">android:textStyle</span><span class="pun">=</span><span class="atv">"bold"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/RelativeLayout&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;LinearLayout</span><span class="pln">
+        </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/innersend2"</span><span class="pln">
+        </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"match_parent"</span><span class="pln">
+        </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"wrap_content"</span><span class="pln">
+        </span><span class="atn">android:layout_gravity</span><span class="pun">=</span><span class="atv">"center"</span><span class="pln">
+        </span><span class="atn">android:layout_marginLeft</span><span class="pun">=</span><span class="atv">"-6dp"</span><span class="pln">
+        </span><span class="atn">android:layout_marginRight</span><span class="pun">=</span><span class="atv">"-6dp"</span><span class="pln">
+        </span><span class="atn">android:alpha</span><span class="pun">=</span><span class="atv">".56"</span><span class="pln">
+
+        </span><span class="atn">android:gravity</span><span class="pun">=</span><span class="atv">"center"</span><span class="pln">
+        </span><span class="atn">android:orientation</span><span class="pun">=</span><span class="atv">"horizontal"</span><span class="pln">
+
+        </span><span class="atn">android:weightSum</span><span class="pun">=</span><span class="atv">"8"</span><span class="tag">&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/imagerep"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/image"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/link"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/link"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/bold"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/bold"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/italics"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/italics"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/bulletlist"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/bullets"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/numlist"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/numbers"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/quote"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/quotes"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+
+        </span><span class="tag">&lt;ImageButton</span><span class="pln">
+            </span><span class="atn">android:id</span><span class="pun">=</span><span class="atv">"@+id/size"</span><span class="pln">
+            </span><span class="atn">android:layout_width</span><span class="pun">=</span><span class="atv">"0dp"</span><span class="pln">
+
+            </span><span class="atn">android:layout_height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:layout_weight</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln">
+            </span><span class="atn">android:height</span><span class="pun">=</span><span class="atv">"48dp"</span><span class="pln">
+            </span><span class="atn">android:background</span><span class="pun">=</span><span class="atv">"#00000000"</span><span class="pln">
+            </span><span class="atn">android:cropToPadding</span><span class="pun">=</span><span class="atv">"false"</span><span class="pln">
+            </span><span class="atn">android:padding</span><span class="pun">=</span><span class="atv">"8dp"</span><span class="pln">
+            </span><span class="atn">android:scaleType</span><span class="pun">=</span><span class="atv">"fitCenter"</span><span class="pln">
+            </span><span class="atn">android:src</span><span class="pun">=</span><span class="atv">"@drawable/fontsizedarker"</span><span class="pln">
+            </span><span class="atn">android:tint</span><span class="pun">=</span><span class="atv">"?attr/tint"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/LinearLayout&gt;</span><span class="pln">
+</span><span class="tag">&lt;/LinearLayout&gt;</span></code></pre>
+
+<p></p>
+
+<p>Removing all the adapter code except for inflation still results in noticeable lag. 
+I really can't find the bottom of this, and any help/tips are greatly appreciated.</p>
+
+<p>EDIT: Some more information: Removing the dataset "hiding" code (getRealPosition, hideAll, unhideAll) has no affect on the speed of the RecyclerView. Also, removing the FlowLayout does not make it any faster.</p>
+    </div>
+    <div class="post-taglist">
+        <a href="https://stackoverflow.com/questions/tagged/android" class="post-tag js-gps-track" title="show questions tagged &#39;android&#39;" rel="tag"><img src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="https://stackoverflow.com/questions/tagged/adapter" class="post-tag js-gps-track" title="show questions tagged &#39;adapter&#39;" rel="tag">adapter</a> <a href="https://stackoverflow.com/questions/tagged/recyclerview" class="post-tag js-gps-track" title="show questions tagged &#39;recyclerview&#39;" rel="tag">recyclerview</a> <a href="https://stackoverflow.com/questions/tagged/lag" class="post-tag js-gps-track" title="show questions tagged &#39;lag&#39;" rel="tag">lag</a> 
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/q/33354934" title="short permalink to this question" class="short-link" id="link-post-33354934">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/33354934/edit" class="suggest-edit-post" title="">improve this question</a></div>        
+    </td>
+    <td align="right" class="post-signature">
+<div class="user-info ">
+    <div class="user-action-time">
+        <a href="https://stackoverflow.com/posts/33354934/revisions" title="show all edits to this post">edited <span title="2015-10-26 20:37:09Z" class="relativetime">Oct 26 '15 at 20:37</span></a>
+    </div>
+    <div class="user-gravatar32">
+        
+    </div>
+    <div class="user-details">
+        
+        <div class="-flair">
+            
+        </div>
+    </div>
+</div>    </td>
+    <td class="post-signature owner">
+        <div class="user-info ">
+    <div class="user-action-time">
+        asked <span title="2015-10-26 20:26:01Z" class="relativetime">Oct 26 '15 at 20:26</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/3697225/ccrama"><div class="gravatar-wrapper-32"><img src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/be0e31a2804b5a6c34487c042150abef" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/3697225/ccrama">ccrama</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">161</span><span title="3 silver badges"><span class="badge2"></span><span class="badgecount">3</span></span><span title="13 bronze badges"><span class="badge3"></span><span class="badgecount">13</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</div>
+</td>
+        </tr>
+                    
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-33354934" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="1" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-54507056" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Did you check out your view hierarchy in the Hierarchy Viewer tool? There's a nice little "profile" button there that will show you the measure/layout/draw time for your hierarchy. You could also dump your view hierarchy as layers and check it out in an image editor -- maybe you have lots of alpha blending? And have you checked how much overdraw you have with the "Profile GPU overdraw" developer option? <a href="http://www.curious-creature.com/docs/android-performance-case-study-1.html" rel="nofollow noreferrer">Romain Guy's case study on Falcon Pro</a> is a great article for getting started with profiling your ui performance.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/4811803/snild-dolkow" title="3,400 reputation" class="comment-user">Snild Dolkow</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment54507056_33354934"><span title="2015-10-26 21:05:51Z" class="relativetime-clean">Oct 26 '15 at 21:05</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54507194" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Very great suggestion! I will definitely be taking a look at these tools and Romain's article. Thank you!</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/3697225/ccrama" title="161 reputation" class="comment-user owner">ccrama</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment54507194_33354934"><span title="2015-10-26 21:09:57Z" class="relativetime-clean">Oct 26 '15 at 21:09</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54508980" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">I followed the article and realized I have very high (4-5) overdraw on the view and got it down to 1 (good), but the scrolling still lags like crazy. I'll work on simplifying the view hierarchy to 1-2 views (hopefully), and we'll see how it goes.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/3697225/ccrama" title="161 reputation" class="comment-user owner">ccrama</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment54508980_33354934"><span title="2015-10-26 22:10:49Z" class="relativetime-clean">Oct 26 '15 at 22:10</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54509035" class="comment ">
+        <td class="comment-actions">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                <span title="number of &#39;useful comment&#39; votes received" class="cool">1</span>
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Have you tried "Tracer for OpenGL ES"? Romain Guy has <a href="http://www.curious-creature.com/2015/03/25/android-performance-case-study-follow-up/" rel="nofollow noreferrer">a follow-up article on it</a>. It can be quite useful to help figure out if you have some unexpected drawing behavior in some views.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/4811803/snild-dolkow" title="3,400 reputation" class="comment-user">Snild Dolkow</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment54509035_33354934"><span title="2015-10-26 22:13:18Z" class="relativetime-clean">Oct 26 '15 at 22:13</span></a></span>
+                        <span class="edited-yes" title="this comment was edited 1 time"></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54509713" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Hmm will definitely take a look at that.Thank you!</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/3697225/ccrama" title="161 reputation" class="comment-user owner">ccrama</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment54509713_33354934"><span title="2015-10-26 22:43:32Z" class="relativetime-clean">Oct 26 '15 at 22:43</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-33354934" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link  dno" title="Use comments to ask for more information or suggest improvements. Avoid answering questions in comments."></a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link " title="expand to show all comments on this post" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#" onclick="">show <b>1</b> more comment</a>
+        </div>         
+    </td>
+</tr>        </tbody></table>
+</div>
+
+			<div id="answers">
+
+				<a name="tab-top"></a>
+				<div id="answers-header">
+					<div class="subheader answers-subheader">
+						<h2>
+								1 Answer
+                                <span style="display:none;" itemprop="answerCount">1</span>
+						</h2>
+						<div>
+							<div id="tabs">
+        <a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance?answertab=active#tab-top" data-nav-xhref="" title="Answers with the latest activity first" data-value="active" data-shortcut="A">
+            active</a>
+        <a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance?answertab=oldest#tab-top" data-nav-xhref="" title="Answers in the order they were provided" data-value="oldest" data-shortcut="O">
+            oldest</a>
+        <a class="youarehere" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance?answertab=votes#tab-top" data-nav-xhref="" title="Answers with the highest score first" data-value="votes" data-shortcut="V">
+            votes</a>
+</div>
+						</div>
+					</div>    
+				</div>    
+
+
+
+
+  
+<a name="33362034"></a>
+<div id="answer-33362034" class="answer accepted-answer" data-answerid="33362034" itemscope="" itemtype="http://schema.org/Answer" itemprop="acceptedAnswer">
+    <table>
+        <tbody><tr>
+            <td class="votecell">
+                
+
+<div class="vote">
+        <input type="hidden" name="_id_" value="33362034">
+        <a class="vote-up-off" title="This answer is useful">up vote</a>
+        <span itemprop="upvoteCount" class="vote-count-post ">6</span>
+        <a class="vote-down-off" title="This answer is not useful">down vote</a>
+
+
+
+        <span class="vote-accepted-on load-accepted-answer-date" title="loading when this answer was accepted...">accepted</span>
+
+</div>
+
+            </td>
+            
+
+
+<td class="answercell">
+    <div class="post-text" itemprop="text">
+<p>I was having the same problem with RecyclerView. It was laggy. In my case, there was a horizontal list of image buttons inside RecyclerView. </p>
+
+<p>I solved it by removing the <code>scaleType</code> from <code>ImageButtons</code> or <code>ImageViews</code> and loading images through <a href="http://square.github.io/picasso/" rel="noreferrer">Picasso</a> with <code>resizing</code> like :</p>
+
+<pre class="default prettyprint prettyprinted"><code><span class="pln"> </span><span class="typ">Picasso</span><span class="pun">.</span><span class="kwd">with</span><span class="pun">(</span><span class="pln">context</span><span class="pun">).</span><span class="pln">load</span><span class="pun">(</span><span class="pln">icon</span><span class="pun">.</span><span class="kwd">get</span><span class="pun">(</span><span class="pln">position</span><span class="pun">)).</span><span class="pln">resize</span><span class="pun">(</span><span class="lit">270</span><span class="pun">,</span><span class="lit">270</span><span class="pun">).</span><span class="pln">centerCrop</span><span class="pun">().</span><span class="kwd">into</span><span class="pun">(</span><span class="pln">holder</span><span class="pun">.</span><span class="pln">iconView</span><span class="pun">);</span></code></pre>
+
+<p>The problem of lag may occur due to runtime scaling of big sized images or no. of images. It is not advisable. Whereas Picasso takes care of resizing, and loading efficiently. Also it handles caching for you.</p>
+    </div>
+    <table class="fw">
+    <tbody><tr>
+    <td class="vt">
+<div class="post-menu"><a href="https://stackoverflow.com/a/33362034" title="short permalink to this answer" class="short-link" id="link-post-33362034">share</a><span class="lsep">|</span><a href="https://stackoverflow.com/posts/33362034/edit" class="suggest-edit-post" title="">improve this answer</a></div>                    </td>
+            
+
+
+    <td align="right" class="post-signature">   
+       
+
+    <div class="user-info user-hover">
+    <div class="user-action-time">
+        answered <span title="2015-10-27 07:23:22Z" class="relativetime">Oct 27 '15 at 7:23</span>
+    </div>
+    <div class="user-gravatar32">
+        <a href="https://stackoverflow.com/users/3011841/theoddabhi"><div class="gravatar-wrapper-32"><img src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/189112ade0123f5d69e066931a34fbf4" alt="" width="32" height="32"></div></a>
+    </div>
+    <div class="user-details">
+        <a href="https://stackoverflow.com/users/3011841/theoddabhi">TheOddAbhi</a>
+        <div class="-flair">
+            <span class="reputation-score" title="reputation score " dir="ltr">2,927</span><span title="2 gold badges"><span class="badge1"></span><span class="badgecount">2</span></span><span title="13 silver badges"><span class="badge2"></span><span class="badgecount">13</span></span><span title="28 bronze badges"><span class="badge3"></span><span class="badgecount">28</span></span>
+        </div>
+    </div>
+</div>
+    </td>
+    </tr>
+    </tbody></table>
+</td>
+        </tr>
+        
+<tr>
+    <td class="votecell"></td>
+    <td>
+	    <div id="comments-33362034" class="comments ">
+		    <table>
+                <tbody data-remaining-comments-count="0" data-canpost="false" data-cansee="true" data-comments-unavailable="false" data-addlink-disabled="true">
+
+
+
+    <tr id="comment-54541746" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">That is EXACTLY what my issue was! I got rid of the horizontal images and it works perfectly fine! I just ended up removing the images and then putting them in at runtime if the user needs to see them (it was a menu that comes up on long press). Thank you!</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/3697225/ccrama" title="161 reputation" class="comment-user owner">ccrama</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment54541746_33362034"><span title="2015-10-27 16:43:54Z" class="relativetime-clean">Oct 27 '15 at 16:43</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-54559521" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">@ccrama You're welcome, buddy.</span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/3011841/theoddabhi" title="2,927 reputation" class="comment-user">TheOddAbhi</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment54559521_33362034"><span title="2015-10-28 04:41:54Z" class="relativetime-clean">Oct 28 '15 at 4:41</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+    <tr id="comment-56796974" class="comment ">
+        <td>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class=" comment-score">
+                                &nbsp;&nbsp;
+                        </td>
+                        <td>
+                                &nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td class="comment-text">
+            <div style="display: block;" class="comment-body">
+                <span class="comment-copy">Use Glide. It's much faster. <a href="https://github.com/bumptech/glide" rel="nofollow noreferrer">github.com/bumptech/glide</a></span>
+                    –&nbsp;<a href="https://stackoverflow.com/users/2123400/eftekhari" title="659 reputation" class="comment-user">Eftekhari</a>
+                <span class="comment-date" dir="ltr"><a class="comment-link" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#comment56796974_33362034"><span title="2015-12-30 10:44:23Z" class="relativetime-clean">Dec 30 '15 at 10:44</span></a></span>
+                                                                            </div>
+                    </td>
+    </tr>
+                </tbody>
+		    </table>
+	    </div>
+
+        <div id="comments-link-33362034" data-rep="50" data-anon="true">
+
+                <a class="js-add-link comments-link disabled-link " title="Use comments to ask for more information or suggest improvements. Avoid comments like “+1” or “thanks”.">add a comment</a><span class="js-link-separator dno">&nbsp;|&nbsp;</span>
+            <a class="js-show-link comments-link dno" title="expand to show all comments on this post" href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#" onclick=""></a>
+        </div>         
+    </td>
+</tr>    </tbody></table>
+</div>
+									<a name="new-answer"></a>
+						<form id="post-form" action="https://stackoverflow.com/questions/33354934/answer/submit" method="post" class="post-form">
+						    <input type="hidden" id="post-id" value="33354934">
+                            <input type="hidden" id="qualityBanWarningShown" name="qualityBanWarningShown" value="false">
+                            <input type="hidden" name="referrer" value="https://www.google.co.id/">
+							<h2 class="space">Your Answer</h2>
+
+
+            <script>
+            StackExchange.ifUsing("editor", function () {
+                StackExchange.using("externalEditor", function () {
+                    StackExchange.using("snippets", function () {
+                        StackExchange.snippets.init();
+                    });
+                });
+            }, "code-snippets");
+        </script>
+    
+
+<script>
+    StackExchange.ready(function() {
+        initTagRenderer("".split(" "), "".split(" "));
+       
+        StackExchange.using("externalEditor", function() {
+                // Have to fire editor after snippets, if snippets enabled
+                if (StackExchange.settings.snippets.snippetsEnabled) {
+                    StackExchange.using("snippets", function() {
+                        createEditor();
+                    });
+                }
+                else {
+                    createEditor();
+                }
+            });
+
+            function createEditor() {
+                StackExchange.prepareEditor({
+                    heartbeatType: 'answer',
+                convertImagesToLinks: true,
+                reputationToPostImages: 10,
+                bindNavPrevention: true,
+                postfix: "",
+                    onDemand: true,
+                    discardSelector: ".discard-answer"
+                    ,immediatelyShowMarkdownHelp:true
+                    });
+                
+
+        }
+    });  
+</script>
+
+
+<div id="post-editor" class="post-editor js-post-editor">
+
+    <div style="position: relative;">     
+        <div class="wmd-container">
+            <div id="wmd-button-bar" class="wmd-button-bar"><ul id="wmd-button-row" class="wmd-button-row"><li id="wmd-bold-button" class="wmd-button" style="left: 0px;"><span style="background-position: 0px -20px;"></span></li><li id="wmd-italic-button" class="wmd-button" style="left: 25px;"><span style="background-position: -20px -20px;"></span></li><li id="wmd-spacer1" class="wmd-spacer" style="left: 50px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-link-button" class="wmd-button" style="left: 75px;"><span style="background-position: -40px -20px;"></span></li><li id="wmd-quote-button" class="wmd-button" style="left: 100px;"><span style="background-position: -60px -20px;"></span></li><li id="wmd-code-button" class="wmd-button" style="left: 125px;"><span style="background-position: -80px -20px;"></span></li><li id="wmd-image-button" class="wmd-button" style="left: 150px;"><span style="background-position: -100px -20px;"></span></li><li id="wmd-spacer2" class="wmd-spacer" style="left: 175px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-olist-button" class="wmd-button" style="left: 200px;"><span style="background-position: -120px -20px;"></span></li><li id="wmd-ulist-button" class="wmd-button" style="left: 225px;"><span style="background-position: -140px -20px;"></span></li><li id="wmd-heading-button" class="wmd-button" style="left: 250px;"><span style="background-position: -160px -20px;"></span></li><li id="wmd-hr-button" class="wmd-button" style="left: 275px;"><span style="background-position: -180px -20px;"></span></li><li id="wmd-spacer3" class="wmd-spacer" style="left: 300px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-undo-button" class="wmd-button" style="left: 325px;"><span style="background-position: -200px -20px;"></span></li><li id="wmd-redo-button" class="wmd-button" style="left: 350px;"><span style="background-position: -220px -20px;"></span></li></ul></div>
+            <textarea id="wmd-input" class="wmd-input" name="post-text" cols="92" rows="15" tabindex="101" data-min-length=""></textarea>
+        </div>
+    </div>
+
+    <div class="fl" style="margin-top: 8px; height:24px;">&nbsp;</div>
+    <div id="draft-saved" class="draft-saved community-option fl" style="margin-top: 8px; height:24px; display:none;">draft saved</div>
+
+    <div id="draft-discarded" class="draft-discarded community-option fl" style="margin-top: 8px; height:24px; display:none;">draft discarded</div>
+
+
+
+    <div id="wmd-preview" class="wmd-preview"></div>
+    <div></div>
+    <div class="edit-block">
+        <input id="fkey" name="fkey" type="hidden" value="533804115ee63dacd93681382f5f214c">
+        <input id="author" name="author" type="text">
+    </div>
+
+
+
+</div>
+							<div style="position: relative;">
+								
+								            <div class="form-item new-post-login">
+        
+                <div class="new-login-form">
+                    <div class="new-login-left">
+                        <h3>Sign up or <a id="login-link" href="https://stackoverflow.com/users/login?ssrc=question_page&amp;returnurl=https%3a%2f%2fstackoverflow.com%2fquestions%2f33354934%2fextremely-laggy-recyclerview-performance%23new-answer">log in</a></h3>
+                        <script>
+                            StackExchange.ready(function () {
+                                StackExchange.helpers.onClickDraftSave('#login-link');
+                            });
+                        </script>
+                        <div class="preferred-login google-login">
+                            <p><span class="icon"></span><span>Sign up using Google</span></p>
+                        </div>
+                        <div class="preferred-login facebook-login">
+                            <p><span class="icon"></span><span>Sign up using Facebook</span></p>
+                        </div>
+                        <div class="preferred-login stackexchange-login">
+                            <p><span class="icon"></span><span>Sign up using Email and Password</span></p>
+                        </div>
+                    </div>
+                    <input type="hidden" name="manual-openid" class="manual-openid">
+                    <input type="hidden" name="use-facebook" class="use-facebook" value="false">
+                    <input type="hidden" name="use-google" class="use-google" value="false">
+                    <input type="button" class="submit-openid" value="Submit" style="display:none">
+                    <div class="new-login-right">
+                                <h3>Post as a guest</h3>
+    <div class="form-item">
+        <table>
+        <tbody><tr>
+                    <td class="vm">
+                <div>
+                    <label for="display-name">Name</label>
+                    <input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105">
+                </div>
+                <div>
+                    <label for="m-address">Email</label>
+                    <input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown">
+                </div>
+            </td>
+        </tr>
+        </tbody></table>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+            <script>
+                StackExchange.ready(
+                    function () {
+                        StackExchange.openid.initPostLogin('.new-post-login', 'https%3a%2f%2fstackoverflow.com%2fquestions%2f33354934%2fextremely-laggy-recyclerview-performance%23new-answer', 'question_page');
+                    }
+                );
+            </script>
+            <noscript>
+                        &lt;h3&gt;Post as a guest&lt;/h3&gt;
+    &lt;div class="form-item"&gt;
+        &lt;table&gt;
+        &lt;tr&gt;
+                    &lt;td class="vm"&gt;
+                &lt;div&gt;
+                    &lt;label for="display-name"&gt;Name&lt;/label&gt;
+                    &lt;input id="display-name" name="display-name" type="text" size="30" maxlength="30" value="" tabindex="105"&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label for="m-address"&gt;Email&lt;/label&gt;
+                    &lt;input id="m-address" name="m-address" type="email" size="30" maxlength="100" value="" tabindex="106" placeholder="required, but never shown" /&gt;
+                &lt;/div&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+
+            </noscript>
+
+							</div>
+           
+															<div class="form-submit cbt">
+									<input id="submit-button" type="submit" value="Post Your Answer" tabindex="110">
+									<a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#" class="btn-clear discard-answer dno">discard</a>
+
+<p class="privacy-policy-agreement">
+By posting your answer, you agree to the <a href="http://stackexchange.com/legal/privacy-policy" name="privacy" target="_blank">privacy policy</a> and <a href="http://stackexchange.com/legal/terms-of-service" name="tos" target="_blank">terms of service</a>.</p>
+<input type="hidden" name="legalLinksShown" value="1">								</div>
+						</form>
+
+
+
+						<h2 class="bottom-notice" data-loc="1">
+Not the answer you're looking for?							Browse other questions tagged <a href="https://stackoverflow.com/questions/tagged/android" class="post-tag" title="show questions tagged &#39;android&#39;" rel="tag"><img src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/tKsDb.png" height="16" width="18" alt="" class="sponsor-tag-img">android</a> <a href="https://stackoverflow.com/questions/tagged/adapter" class="post-tag" title="show questions tagged &#39;adapter&#39;" rel="tag">adapter</a> <a href="https://stackoverflow.com/questions/tagged/recyclerview" class="post-tag" title="show questions tagged &#39;recyclerview&#39;" rel="tag">recyclerview</a> <a href="https://stackoverflow.com/questions/tagged/lag" class="post-tag" title="show questions tagged &#39;lag&#39;" rel="tag">lag</a>  or <a href="https://stackoverflow.com/questions/ask">ask your own question</a>.						</h2>
+			</div>
+		</div>
+				<div id="sidebar" class="show-votes" role="complementary" aria-label="sidebar">
+						    <div class="module question-stats">
+			        <table id="qinfo">
+			            <tbody><tr>
+			                <td>
+			                    <p class="label-key">asked</p>
+			                </td>
+			                <td style="padding-left: 10px">
+			                    <p class="label-key" title="2015-10-26 20:26:01Z"><b>1 year, 7 months ago</b></p>
+			                </td>
+			            </tr>
+			            <tr>
+			                <td>
+			                    <p class="label-key">viewed</p>
+			                </td>
+
+			                <td style="padding-left: 10px">
+			                    <p class="label-key">
+			                        <b>3024 times</b>
+			                    </p>
+			                </td>
+			            </tr>
+			                <tr>
+			                    <td>
+			                        <p class="label-key">active</p>
+			                    </td>
+			                    <td style="padding-left: 10px">
+			                        <p class="label-key"><b><a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance?lastactivity" class="lastactivity-link" title="2015-10-27 07:23:22Z">1 year, 7 months ago</a></b></p>
+			                    </td>
+			                </tr>
+			        </tbody></table>
+			    </div>
+						
+			<script>
+                var ados = ados || {}; ados.run = ados.run || [];
+                ados.run.push(function () { ados_add_placement(22,8277,"adzerk831922660",[5,17,2221,1129,43]).setZone(45); });
+            </script>
+            <div class="everyonelovesstackoverflow adzerk-vote" id="adzerk831922660"><div id="careersadsdoublehigh" style="display:none;"></div><div class="adzerk-vote-controls" style="display:none;"><div class="adzerk-vote-option adzerk-vote-up"><div class="adzerk-vote-icon"></div></div><div class="adzerk-vote-option adzerk-vote-down"><div class="adzerk-vote-icon"></div></div></div><div class="adzerk-vote-survey" style="display:none;"><form><span>No problem. We won't show you that ad again. Why didn't you like it?</span><ul><li><label><input type="radio" value="12" name="downvoteReason">Uninteresting</label></li><li><label><input type="radio" value="13" name="downvoteReason">Misleading</label></li><li><label><input type="radio" value="14" name="downvoteReason">Offensive</label></li><li><label><input type="radio" value="15" name="downvoteReason">Repetitive</label></li><li><label><input type="radio" value="16" name="downvoteReason">Other</label></li></ul><a href="https://stackoverflow.com/questions/33354934/extremely-laggy-recyclerview-performance#" class="adzerk-vote-cancel">Oops! I didn't mean to do this.</a></form></div><img height="0px" width="0px" border="0" style="position:absolute;" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/i(1).gif"></div>
+            <div id="hireme"></div>
+        <script>
+window.clc_request = 'AmyV7wKOp9QIAAAAALb0_AECAAAAAgAAAAAiAAAAfGFuZHJvaWR8YWRhcHRlcnxyZWN5Y2xlcnZpZXd8bGFnfADrGPo2BUJnrlxd';;(function(n){var u={log:window.console.log.bind(window.console,"[clc]"),error:window.console.error.bind(window.console,"[clc]")},f,e,t,r,i;try{if(typeof[].indexOf!="function")return;if(window.attachEvent&&!window.addEventListener)return;if(f=n.allowed,!f)return;if(e=new RegExp(n.allowed),!e.test(location.hostname)){u.error("Invalid host: "+location.hostname);return}if(t=window,t.clc=t.clc||{},t.clc.init=t.clc.init||[],t.clc.init.push(function(n){return n.load()}),t.clc.options){for(r in t.clc.options)n[r]=t.clc.options[r];t.clc.options=n}else t.clc.options=n;i=document.createElement("script");i.async=!0;i.src=n.lib;document.body.appendChild(i)}catch(o){u.error("[clc] Error in loader:",o)}}).call(null, {"lib":"https://cdn.sstatic.net/clc/clc.min.js?v=436861d2e2c5","u":"https://clc.stackoverflow.com/markup.js","azw":true,"kt":2000,"tto":true,"d":{"sb":["hireme","clc-sb"],"tlb":["careers1","clc-tlb"],"mlb":["careers3","clc-mlb"]},"h":"clc.stackoverflow.com","autoload":true,"allowed":"^(((talent\\.)?stackoverflow)|(blog\\.codinghorror)|(serverfault|askubuntu)|([^\\.]+\\.stackexchange))\\.com$"});        </script>
+			
+
+            <div class="module sidebar-linked">
+	<h4 id="h-linked">Linked</h4>
+	<div class="linked" data-tracker="lq=1">
+
+<div class="spacer">
+	<a href="https://stackoverflow.com/q/40817377?lq=1" title="Vote score (upvotes - downvotes)">
+		<div class="answer-votes  default">0</div>
+	</a>
+	<a href="https://stackoverflow.com/questions/40817377/app-runs-in-very-laggy-way-and-then-outofmemoryerror?noredirect=1&amp;lq=1" class="question-hyperlink">App runs in very laggy way and. Then OutOfMemoryError</a>
+</div>			</div>
+</div>
+
+				<div class="module sidebar-related">
+					<h4 id="h-related">Related</h4>
+                    <div class="related js-gps-related-questions" data-tracker="rq=1">
+                        <div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/24471109?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">307</div></a><a href="https://stackoverflow.com/questions/24471109/recyclerview-onclick?rq=1" class="question-hyperlink">RecyclerView onClick</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/24618829?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes large">493</div></a><a href="https://stackoverflow.com/questions/24618829/how-to-add-dividers-and-spaces-between-items-in-recyclerview?rq=1" class="question-hyperlink">How to add dividers and spaces between items in RecyclerView?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/24885223?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted large">665</div></a><a href="https://stackoverflow.com/questions/24885223/why-doesnt-recyclerview-have-onitemclicklistener-and-how-recyclerview-is-dif?rq=1" class="question-hyperlink">Why doesn't RecyclerView have onItemClickListener()? And how RecyclerView is different from Listview?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/31263826?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">3</div></a><a href="https://stackoverflow.com/questions/31263826/android-ui-lag-when-scrolling-multiple-recyclerviews?rq=1" class="question-hyperlink">Android ui lag when scrolling multiple recyclerviews</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/32342815?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/32342815/manually-inflate-items-in-recyclerview?rq=1" class="question-hyperlink">Manually inflate items in RecyclerView</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/32727597?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="https://stackoverflow.com/questions/32727597/recyclerview-beings-to-lag-after-multiple-activity-instances?rq=1" class="question-hyperlink">Recyclerview beings to lag after multiple activity instances</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/33272410?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/33272410/looking-for-ways-to-improve-recyclerview-preformance?rq=1" class="question-hyperlink">Looking for Ways to Improve RecyclerView Preformance</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/36377668?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes answered-accepted default">0</div></a><a href="https://stackoverflow.com/questions/36377668/laggy-recycler-view-without-even-any-code?rq=1" class="question-hyperlink">Laggy Recycler View without even any code?</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/42438822?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/42438822/recyclerview-is-laggy?rq=1" class="question-hyperlink">RecyclerView is laggy</a></div><div class="spacer js-gps-track"><a href="https://stackoverflow.com/q/43154530?rq=1" title="Vote score (upvotes - downvotes)"><div class="answer-votes default">0</div></a><a href="https://stackoverflow.com/questions/43154530/laggy-recyclerview-scoll?rq=1" class="question-hyperlink">Laggy recyclerview scoll</a></div>
+                    </div>
+				</div>
+            
+
+<div id="hot-network-questions" class="module tex2jax_ignore">
+    <h4>
+        <a href="https://stackexchange.com/questions?tab=hot" class="js-gps-track" data-gps-track="posts_hot_network.click({ item_type:1, location:11 })">
+            Hot Network Questions
+        </a>
+    </h4>
+    <ul>
+            <li>
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="https://stackoverflow.com/questions/44263503/matching-variadic-non-type-templates" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Matching variadic non-type templates
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/91829/should-i-list-leadership-experience-when-it-was-with-a-religious-group-i-no-long" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Should I list leadership experience when it was with a religious group I no longer believe in?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/123331/find-a-binary-needle-in-a-decimal-haystack" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Find a binary needle in a decimal haystack
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-diy" title="Home Improvement Stack Exchange"></div><a href="https://diy.stackexchange.com/questions/115571/how-to-choose-the-right-machine-screw-for-an-existing-threaded-hole" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:73 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to choose the right machine screw for an existing threaded hole?
+                </a>
+
+            </li>
+            <li>
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/372440/display-different-colors-in-the-table-of-contents" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Display different colors in the table of contents
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-ell" title="English Language Learners Stack Exchange"></div><a href="https://ell.stackexchange.com/questions/130950/a-word-to-describe-someone-who-expects-you-to-act-one-way-but-does-not-act-in-th" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:481 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    A word to describe someone who expects you to act one way but does not act in the same way
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-unix" title="Unix &amp; Linux Stack Exchange"></div><a href="https://unix.stackexchange.com/questions/367982/are-files-opened-by-processes-loaded-into-ram" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:106 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Are files opened by processes loaded into RAM?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-english" title="English Language &amp; Usage Stack Exchange"></div><a href="https://english.stackexchange.com/questions/391679/is-mini-a-word-in-its-own-right" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:97 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is 'mini' a word in its own right?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-softwareengineering" title="Software Engineering Stack Exchange"></div><a href="https://softwareengineering.stackexchange.com/questions/349808/todo-comments-with-deadlines" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:131 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    TODO comments with deadlines?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/123435/general-tips-for-representing-large-numbers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    General tips for representing large numbers
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-physics" title="Physics Stack Exchange"></div><a href="https://physics.stackexchange.com/questions/336386/if-temperature-is-amount-of-kinetic-energy-of-particles-then-how-can-cold-breez" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:151 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If temperature is amount of kinetic energy of particles, then how can cold breeze be there?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-tex" title="TeX - LaTeX Stack Exchange"></div><a href="https://tex.stackexchange.com/questions/372326/bizarre-spacing-with-4-stars" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:85 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Bizarre spacing with 4 $\star$s
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codereview" title="Code Review Stack Exchange"></div><a href="https://codereview.stackexchange.com/questions/164517/my-first-implementation-of-a-client-server-application" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:196 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    My first implementation of a client/server application
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-biology" title="Biology Stack Exchange"></div><a href="https://biology.stackexchange.com/questions/60251/how-do-the-three-mechanisms-of-the-1000x-improved-new-vancomycin-work-together" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:375 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How do the three mechanisms of the 1000X improved "new" vancomycin work together?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/123403/better-hex-color-codes-for-your-internet" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Better Hex Color Codes for Your Internet
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-workplace" title="The Workplace Stack Exchange"></div><a href="https://workplace.stackexchange.com/questions/91737/can-i-ask-how-did-i-do-at-the-end-of-an-interview" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:423 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Can I ask "How did I do?" at the end of an interview?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-tridion" title="Tridion Stack Exchange"></div><a href="https://tridion.stackexchange.com/questions/17206/what-is-the-best-way-to-secure-the-url-admin-refresh-in-java-dxa-1-5" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:485 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    What is the best way to secure the URL /admin/refresh in JAVA DXA 1.5?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-stackoverflow" title="Stack Overflow"></div><a href="https://stackoverflow.com/questions/44259619/how-to-sum-large-numbers" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:1 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How to sum large numbers?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-scifi" title="Science Fiction &amp; Fantasy Stack Exchange"></div><a href="https://scifi.stackexchange.com/questions/160637/how-was-groot-able-to-say-we-are-groot" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:186 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    How was Groot able to say "We are Groot"?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-academia" title="Academia Stack Exchange"></div><a href="https://academia.stackexchange.com/questions/90131/is-it-an-insult-to-my-us-university-to-not-walk-in-graduation" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:415 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Is it an insult to my US university to not walk in graduation?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-gamedev" title="Game Development Stack Exchange"></div><a href="https://gamedev.stackexchange.com/questions/141798/if-a-3d-vector-represents-a-point-how-can-it-have-a-length" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:53 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    If a 3D vector represents a point, how can it have a length?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-money" title="Personal Finance &amp; Money Stack Exchange"></div><a href="https://money.stackexchange.com/questions/80206/confused-should-i-be-opening-more-accounts-to-improve-my-score-with-the-intenti" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:93 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Confused: Should I be opening more accounts to improve my score with the intention to not use them?
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-boardgames" title="Board &amp; Card Games Stack Exchange"></div><a href="https://boardgames.stackexchange.com/questions/35443/returning-an-enchantment-to-your-hand" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:147 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Returning an enchantment to your hand
+                </a>
+
+            </li>
+            <li class="dno js-hidden" style="display: list-item;">
+                <div class="favicon favicon-codegolf" title="Programming Puzzles &amp; Code Golf Stack Exchange"></div><a href="https://codegolf.stackexchange.com/questions/123478/remove-the-salutations" class="js-gps-track" data-gps-track="site.switch({ item_type:11, target_site:200 }); posts_hot_network.click({ item_type:2, location:11 })">
+                    Remove the Salutations
+                </a>
+
+            </li>
+    </ul>
+
+        
+</div>
+		</div>
+	
+<div id="feed-link">
+    <div id="feed-link-text">
+        <a href="https://stackoverflow.com/feeds/question/33354934" title="feed of this question and its answers">
+            <span class="feed-icon"></span>question feed
+        </a>
+    </div>
+</div>	<script>
+StackExchange.ready(function(){$.get('/posts/33354934/ivc/e221');});
+</script>
+<noscript>
+    &lt;div&gt;&lt;img src="/posts/33354934/ivc/e221" class="dno" alt="" width="0" height="0"&gt;&lt;/div&gt;
+</noscript><div style="display:none" id="prettify-lang">default</div></div>
+
+
+        </div>
+    </div><script async="" src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/clc.min.js.download"></script>
+    <div id="footer" class="categories" role="contentinfo">
+        <div class="footerwrap">            
+            <div id="footer-menu">
+                <div class="top-footer-links">
+
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:1 })" href="https://stackoverflow.com/company/about">about us</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:2 })" href="https://stackoverflow.com/tour">tour</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:3 })" href="https://stackoverflow.com/help">help</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:4 })" href="https://stackoverflow.blog/?blb=1">blog</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:5 })" href="https://chat.stackoverflow.com/">chat</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:6 })" href="https://data.stackexchange.com/">data</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:7 })" href="https://stackexchange.com/legal">legal</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:8 })" href="https://stackexchange.com/legal/privacy-policy">privacy policy</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:9 })" href="https://stackoverflow.com/company/work-here">work here</a>
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:10 })" href="https://www.stackoverflowbusiness.com/advertise">advertising info</a>
+                        <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:11 })" href="https://stackoverflow.com/jobs/directory/developer-jobs">developer jobs directory</a>
+
+                    <a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:12 })" onclick="StackExchange.switchMobile(&quot;on&quot;)">mobile</a>
+                    <b><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:13 })" href="https://stackoverflow.com/contact">contact us</a></b>
+                        <b><a class="js-gps-track" data-gps-track="footer.click({ location: 2, link:14 })" href="https://meta.stackoverflow.com/">feedback</a></b>
+                    
+                </div>
+                <div id="footer-sites">
+                    <table>
+    <tbody><tr>
+            <th colspan="3">
+                Technology
+            </th>
+            <th>
+                Life / Arts
+            </th>
+            <th>
+                Culture / Recreation
+            </th>
+            <th>
+                Science
+            </th>
+            <th>
+                Other
+            </th>
+    </tr>
+    <tr>
+            <td>
+                <ol>
+                        <li><a href="https://stackoverflow.com/" title="professional and enthusiast programmers">Stack Overflow</a></li>
+                        <li><a href="https://serverfault.com/" title="system and network administrators">Server Fault</a></li>
+                        <li><a href="https://superuser.com/" title="computer enthusiasts and power users">Super User</a></li>
+                        <li><a href="https://webapps.stackexchange.com/" title="power users of web applications">Web Applications</a></li>
+                        <li><a href="https://askubuntu.com/" title="Ubuntu users and developers">Ask Ubuntu</a></li>
+                        <li><a href="https://webmasters.stackexchange.com/" title="pro webmasters">Webmasters</a></li>
+                        <li><a href="https://gamedev.stackexchange.com/" title="professional and independent game developers">Game Development</a></li>
+                        <li><a href="https://tex.stackexchange.com/" title="users of TeX, LaTeX, ConTeXt, and related typesetting systems">TeX - LaTeX</a></li>
+                        <li><a href="https://softwareengineering.stackexchange.com/" title="professionals, academics, and students working within the systems development life cycle">Software Engineering</a></li>
+                        <li><a href="https://unix.stackexchange.com/" title="users of Linux, FreeBSD and other Un*x-like operating systems">Unix &amp; Linux</a></li>
+                        <li><a href="https://apple.stackexchange.com/" title="power users of Apple hardware and software">Ask Different (Apple)</a></li>
+                        <li><a href="https://wordpress.stackexchange.com/" title="WordPress developers and administrators">WordPress Development</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://gis.stackexchange.com/" title="cartographers, geographers and GIS professionals">Geographic Information Systems</a></li>
+                        <li><a href="https://electronics.stackexchange.com/" title="electronics and electrical engineering professionals, students, and enthusiasts">Electrical Engineering</a></li>
+                        <li><a href="https://android.stackexchange.com/" title="enthusiasts and power users of the Android operating system">Android Enthusiasts</a></li>
+                        <li><a href="https://security.stackexchange.com/" title="information security professionals">Information Security</a></li>
+                        <li><a href="https://dba.stackexchange.com/" title="database professionals who wish to improve their database skills and learn from others in the community">Database Administrators</a></li>
+                        <li><a href="https://drupal.stackexchange.com/" title="Drupal developers and administrators">Drupal Answers</a></li>
+                        <li><a href="https://sharepoint.stackexchange.com/" title="SharePoint enthusiasts">SharePoint</a></li>
+                        <li><a href="https://ux.stackexchange.com/" title="user experience researchers and experts">User Experience</a></li>
+                        <li><a href="https://mathematica.stackexchange.com/" title="users of Wolfram Mathematica">Mathematica</a></li>
+                        <li><a href="https://salesforce.stackexchange.com/" title="Salesforce administrators, implementation experts, developers and anybody in-between">Salesforce</a></li>
+                        <li><a href="https://expressionengine.stackexchange.com/" title="administrators, end users, developers and designers for ExpressionEngine® CMS">ExpressionEngine® Answers</a></li>
+                        <li><a href="https://crypto.stackexchange.com/" title="software developers, mathematicians and others interested in cryptography">Cryptography</a></li>
+                            </ol></td><td><ol>
+                        <li><a href="https://codereview.stackexchange.com/" title="peer programmer code reviews">Code Review</a></li>
+                        <li><a href="https://magento.stackexchange.com/" title="users of the Magento e-Commerce platform">Magento</a></li>
+                        <li><a href="https://dsp.stackexchange.com/" title="practitioners of the art and science of signal, image and video processing">Signal Processing</a></li>
+                        <li><a href="https://raspberrypi.stackexchange.com/" title="users and developers of hardware and software for Raspberry Pi">Raspberry Pi</a></li>
+                        <li><a href="https://codegolf.stackexchange.com/" title="programming puzzle enthusiasts and code golfers">Programming Puzzles &amp; Code Golf</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#technology" class="more">
+                                more (7)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://photo.stackexchange.com/" title="professional, enthusiast and amateur photographers">Photography</a></li>
+                        <li><a href="https://scifi.stackexchange.com/" title="science fiction and fantasy enthusiasts">Science Fiction &amp; Fantasy</a></li>
+                        <li><a href="https://graphicdesign.stackexchange.com/" title="Graphic Design professionals, students, and enthusiasts">Graphic Design</a></li>
+                        <li><a href="https://movies.stackexchange.com/" title="movie and tv enthusiasts">Movies &amp; TV</a></li>
+                        <li><a href="https://music.stackexchange.com/" title="musicians, students, and enthusiasts">Music: Practice &amp; Theory</a></li>
+                        <li><a href="https://cooking.stackexchange.com/" title="professional and amateur chefs">Seasoned Advice (cooking)</a></li>
+                        <li><a href="https://diy.stackexchange.com/" title="contractors and serious DIYers">Home Improvement</a></li>
+                        <li><a href="https://money.stackexchange.com/" title="people who want to be financially literate">Personal Finance &amp; Money</a></li>
+                        <li><a href="https://academia.stackexchange.com/" title="academics and those enrolled in higher education">Academia</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#lifearts" class="more">
+                                more (8)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://english.stackexchange.com/" title="linguists, etymologists, and serious English language enthusiasts">English Language &amp; Usage</a></li>
+                        <li><a href="https://skeptics.stackexchange.com/" title="scientific skepticism">Skeptics</a></li>
+                        <li><a href="https://judaism.stackexchange.com/" title="those who base their lives on Jewish law and tradition and anyone interested in learning more">Mi Yodeya (Judaism)</a></li>
+                        <li><a href="https://travel.stackexchange.com/" title="road warriors and seasoned travelers">Travel</a></li>
+                        <li><a href="https://christianity.stackexchange.com/" title="committed Christians, experts in Christianity and those interested in learning more">Christianity</a></li>
+                        <li><a href="https://ell.stackexchange.com/" title="speakers of other languages learning English">English Language Learners</a></li>
+                        <li><a href="https://japanese.stackexchange.com/" title="students, teachers, and linguists wanting to discuss the finer points of the Japanese language">Japanese Language</a></li>
+                        <li><a href="https://gaming.stackexchange.com/" title="passionate videogamers on all platforms">Arqade (gaming)</a></li>
+                        <li><a href="https://bicycles.stackexchange.com/" title="people who build and repair bicycles, people who train cycling, or commute on bicycles">Bicycles</a></li>
+                        <li><a href="https://rpg.stackexchange.com/" title="gamemasters and players of tabletop, paper-and-pencil role-playing games">Role-playing Games</a></li>
+                        <li><a href="https://anime.stackexchange.com/" title="anime and manga fans">Anime &amp; Manga</a></li>
+                        <li><a href="https://mechanics.stackexchange.com/" title="mechanics and DIY enthusiast owners of cars, trucks, and motorcycles">Motor Vehicle Maintenance &amp; Repair</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#culturerecreation" class="more">
+                                more (17)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://mathoverflow.net/" title="professional mathematicians">MathOverflow</a></li>
+                        <li><a href="https://math.stackexchange.com/" title="people studying math at any level and professionals in related fields">Mathematics</a></li>
+                        <li><a href="https://stats.stackexchange.com/" title="people interested in statistics, machine learning, data analysis, data mining, and data visualization">Cross Validated (stats)</a></li>
+                        <li><a href="https://cstheory.stackexchange.com/" title="theoretical computer scientists and researchers in related fields">Theoretical Computer Science</a></li>
+                        <li><a href="https://physics.stackexchange.com/" title="active researchers, academics and students of physics">Physics</a></li>
+                        <li><a href="https://chemistry.stackexchange.com/" title="scientists, academics, teachers and students">Chemistry</a></li>
+                        <li><a href="https://biology.stackexchange.com/" title="biology researchers, academics, and students">Biology</a></li>
+                        <li><a href="https://cs.stackexchange.com/" title="students, researchers and practitioners of computer science">Computer Science</a></li>
+                        <li><a href="https://philosophy.stackexchange.com/" title="those interested in the study of the fundamental nature of knowledge, reality, and existence">Philosophy</a></li>
+                    
+                        <li>
+                            <a href="https://stackexchange.com/sites#science" class="more">
+                                more (3)
+                            </a>
+                        </li>
+                </ol>
+            </td>
+            <td>
+                <ol>
+                        <li><a href="https://meta.stackexchange.com/" title="meta-discussion of the Stack Exchange family of Q&amp;A websites">Meta Stack Exchange</a></li>
+                        <li><a href="https://stackapps.com/" title="apps, scripts, and development with the Stack Exchange API">Stack Apps</a></li>
+                        <li><a href="https://area51.stackexchange.com/" title="proposing new sites in the Stack Exchange network">Area 51</a></li>
+                        <li><a href="https://www.stackoverflowbusiness.com/talent">Stack Overflow Talent</a></li>
+                    
+                </ol>
+            </td>
+    </tr>
+</tbody></table>
+                </div>
+            </div>
+            <div id="copyright">
+                site design / logo © 2017 Stack Exchange Inc; user contributions licensed under <a href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">cc by-sa 3.0</a> 
+                with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/" rel="license">attribution required</a>
+            </div>
+            <div id="svnrev">
+                rev 2017.5.30.26080
+            </div>
+                </div>
+    </div>
+    <noscript>
+        &lt;div id="noscript-warning"&gt;Stack Overflow works best with JavaScript enabled
+            &lt;img src="https://pixel.quantserve.com/pixel/p-c1rF4kxgLUzNc.gif" alt="" class="dno"&gt;
+        &lt;/div&gt;
+    </noscript>
+<script>var z=document.createElement("script");z.type="text/javascript",z.async=!0,z.src="https://static.adzerk.net/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script>
+var ados = ados || {};
+ados.run = ados.run || [];
+
+
+ados.run.push(function () {
+    setTimeout(function () { $("#adzerk-user-match").remove(); }, window.AUMIframeDone ? 0 : 2000);
+    ados_setKeywords('android,adapter,recyclerview,lag');; ados_load();
+});   
+
+</script>
+
+    <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function() { (i[r].q = i[r].q || []).push(arguments) }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m);
+            })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+                ga('create', 'UA-5620270-1');
+                ga('create', 'UA-5620270-59', {name: 'pageData', sampleRate: 5 });
+                ga('set', 'dimension2', '|android|adapter|recyclerview|lag|');
+                ga('pageData.set', 'dimension2', '|android|adapter|recyclerview|lag|');
+                ga('send', 'pageview');
+                ga('pageData.send', 'pageview');
+        var _qevents = _qevents || [],
+            _comscore = _comscore || [];
+        (function () {
+            var ssl='https:'==document.location.protocol,
+                s=document.getElementsByTagName('script')[0],
+                qc=document.createElement('script');
+                qc.async = true;
+                qc.src = (ssl ? 'https://secure' : 'http://edge') + '.quantserve.com/quant.js';
+                s.parentNode.insertBefore(qc, s);
+                _qevents.push({ qacct: "p-c1rF4kxgLUzNc" });
+                            var sc=document.createElement('script');
+                sc.async=true;
+                sc.src=(ssl?'https://sb':'http://b') + '.scorecardresearch.com/beacon.js';
+                s.parentNode.insertBefore(sc, s);
+                _comscore.push({ c1: "2", c2: "17440561" });
+        })();
+
+    </script>
+        
+    
+            <script type="text/javascript">
+                
+                (function(appendChild) {
+                    Node.prototype.appendChild = function() {
+                        var parent = this;
+                        var newNode = arguments[0];
+                        if (parent.nodeName === 'HEAD'
+                            && newNode
+                            && newNode.nodeName === 'SCRIPT'
+                            && newNode.src) {
+                            
+                            window.setTimeout(function() {
+                                var result = newNode.src.match(/^https:\/\/maps\.googleapis\.com\/maps\/api\/place\/js\/(\w+)Service\./i) || [];
+                                var service = result[1];
+                                if (service) {
+                                    if (service === 'Autocompletion') service =  2;
+                                    else if (service === 'Place') service = 1;
+                                    else service = 0;
+                                    StackExchange.using('gps', function() {
+                                        StackExchange.gps.track('google_maps_places_api.call', { service: service });
+                                    });
+                                }
+                            }, 0);
+                        }
+                        return appendChild.apply(this, arguments);
+                    };
+                })(Node.prototype.appendChild);
+            </script>
+    
+<img src="./android - Extremely Laggy RecyclerView Performance - Stack Overflow_files/timeout.gif" style="display: none;"></body></html>

@@ -1,0 +1,27 @@
+function piResponse() {
+piSetCookie('visitor_id299472', '20994333', 999);
+piSetCookie('visitor_id299472-hash', '5b169ed8ee185d13a4864d6771e2a6b489935d1b9195add13ab6ae38a6d224d674f25c7dc8aecc1c144729cc152927e1f254dfe3', 999);
+
+if (document.location.protocol != "https:") {
+var analytics_link = "http://" + "www2.bignerdranch.com/analytics?";
+pi.tracker.visitor_id='20994333';
+
+pi.tracker.visitor_id_sign='5b169ed8ee185d13a4864d6771e2a6b489935d1b9195add13ab6ae38a6d224d674f25c7dc8aecc1c144729cc152927e1f254dfe3';
+
+var variables = 'conly=true';
+for (property in pi.tracker) {
+	variables += "&"+property+"="+pi.tracker[property];
+}
+var headID = document.getElementsByTagName("head")[0];
+piScriptObj[piScriptNum] = document.createElement('script');
+piScriptObj[piScriptNum].type = 'text/javascript';
+piScriptObj[piScriptNum].src = analytics_link + variables;
+headID.appendChild(piScriptObj[piScriptNum]);
+piScriptObj[piScriptNum].onload = function() { return; }
+}
+}
+piResponse();
+
+
+
+
